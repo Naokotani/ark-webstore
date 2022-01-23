@@ -14,6 +14,12 @@ module.exports = {
 			},
 		},
 		"gatsby-plugin-image",
-
+		{
+			resolve: "gatsby-source-sanity",
+			options: {
+				projectId: process.env.SANITY_ID,
+				dataset: "tbt",
+			},
+		},
 	]
 }

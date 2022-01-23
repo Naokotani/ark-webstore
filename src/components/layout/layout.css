@@ -8,49 +8,62 @@
     src: url("https://fonts.googleapis.com/css2?family=+Baskerville&display=swap" )
 }
 
+@font-face {
+		font-family: 'Archivo', sans-serif;
+		font-family: 'Roboto', sans-serif;
+		src: url('https://fonts.googleapis.com/css2?family=Archivo&family=Roboto&display=swap'); 
+} 
+
 
 
 :root {
     /*Define colours as colours*/
-    /*Blue Green*/
-
-    --lightBlueGreen: #A7CACD;
-    --medBlueGreen: #236267;
-    --darkBlueGreen: #00181A;
-
-    /*Grey Blue*/
-
-    --lightGreyBlue: #AEC0D2;
-    --medGreyBlue: #2A4D6E;
-    --darkGreyBlue: #010F1C;
-
-    /*Blue Green*/
-
-    --lightGreen: #AFD6C6;
-    --medGreen: #277455;
-    --darkGreen: #001D11;
 
     --red: #ff0003;
     --yellow: #fde24f;
     --white: #fff;
 
+		/* L'Arche Colours */
+		--blue: #214c73;
+		--darkBlue: #122A40;
+		--lightBlue: #7199BF;
+		--grey: #646464;
+		--darkGrey: #323232;
+		--orange: #CD691A;
+		--lightOrange: #F28E3F;
+    --darkGreyBlue: #010F1C;
+
+
+
     /*define colour intentions*/
 
-    --primary: var(--darkBlueGreen);
+    --primary: var(--blue);
     --danger: var(--red);
     --background: var(--white);
-    --textColor: var(--darkGreyBlue);
-    --lineColor: var(--medBlueGreen);
-    --cardBg: var(--lightGreyBlue);
-    --blockquoteBg: var(--lightGreen);
-    --buttonTextColor: var(--lightGreyBlue);
+    --textColor: var(--darkGrey);
+    --lineColor: var(--orange);
+
+    --cardBg: var(--blue);
+		--cardText: var(--white);
+
+    --blockquoteBg: var(--lightBlue);
+		--blockquoteText: var(--darkGreyBlue);
+
+		--buttonColor: var(--lightOrange);
+    --buttonTextColor: var(--white);
+
+		--navTextColor: var(--white);
+		--navColor: var(--darkBlue);
+
+		--footerColor: var(--blue);
+		--footerText: var(--white);
 
     /* Styles */
     --line: solid 1px var(--lineColor);
 
     /* Fonts */
-    --headingFont: 'Libre Baskerville', sans-serif;
-    --bodyFont: 'Inter', monospace;
+    --headingFont: 'Archivo', sans-serif;
+    --bodyFont: 'Roboto', sans-serif;
     --baseFontSize: 100%;
     --h1: 3.052rem;
     --h2: 2.441rem;
@@ -68,7 +81,7 @@
     /* Positioning */
     --containerPadding: 2.5%;
     --headerHeight: 3rem;
-    --borderRadius: 10px;
+    --borderRadius: 5px;
 		--footerHeight: 9rem;
 		--headerFooterHeight: calc(var(--headerHeight) + var(--footerHeight));
 }
@@ -97,7 +110,7 @@ body {
 }
 
 header {
-    --headerBackground: var(--darkBlueGreen);
+    --headerBackground: var(--navColor);
     position: fixed;
     top: 0;
     left: 0;
@@ -131,9 +144,9 @@ header nav a + a {
 }
 
 footer {
-    --footerTextColor: var(--lightGreyBlue);
+    --footerTextColor: var(--footerText);
     color: var(--footerTextColor);
-    background: var(--darkGreen);
+    background: var(--footerColor);
     padding: 2rem var(--containerPadding);
     text-align: center;
 		height: var(--footerHeight);
@@ -157,9 +170,9 @@ p {
 
 p a,
 blockquote a {
-    color: var(--textColor);
+    color: var(--darkGreyBlue);
     text-decoration: none;
-    border-bottom: solid 2px var(--primary);
+    border-bottom: solid 2px var(--orange);
 }
 
 h1, h2, h3, h4, h5 {
@@ -191,6 +204,7 @@ blockquote {
     margin: 10px;
     padding: 2em;
     box-shadow: var(--level-3);
+		color: var(--blockquoteText);
 }
 
 label {
@@ -340,10 +354,19 @@ button.plain:hover {
 
 .card {
     background: var(--cardBg);
+		color: var(--cardText);
     margin: 10px;
     padding: 1em;
     box-shadow: var(--level-3);
     border-radius: var(--borderRadius);
+}
+
+.card {
+	--primary: var(--darkBlue);
+}
+
+.card a {
+	color: var(--white);
 }
 
 .card > *:first-child {
