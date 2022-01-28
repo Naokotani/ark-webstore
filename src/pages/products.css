@@ -1,0 +1,35 @@
+.card p, h5 {
+	margin-top: 0;
+}
+
+.card h5 {
+	border-bottom: 1px solid var(--lineColor);
+}
+
+.card img {
+	border-radius: 5px;
+}
+
+.card section {
+	background: var(--white);
+	width: 100%;
+	border-radius: 5px;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.products--layout {
+  max-width: 1660px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 10px;
+  /* fit as many columns as possible, 180px wide each: */
+  grid-template-columns: repeat(auto-fill, 400px);
+  /* each row is 20px high -- we always span 2+ */
+  grid-auto-rows: minmax(20px, auto);
+  justify-content: center;	
+}
+
+.products--card {
+	box-shadow: var(--level-3);
+}

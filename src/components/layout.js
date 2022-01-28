@@ -1,29 +1,32 @@
 import React from "react"
 import "./layout/layout.css"
 import "./layout/normalize.css"
+import { StaticImage } from "gatsby-plugin-image"
+import { Link } from 'gatsby';
 
 export default function Layout({ children }) {
 	return (
-		<div>
+		<article>
 			<header>
-				<h1 class="fake-logo">Fake Logo</h1>
-				<img src="../images/layout_set_logo.png" alt="lol"/>
+				<Link to="/kitchen-sink">
+				<StaticImage
+					src="../images/lcblogohd.png"
+					alt="lol" />
+				</Link>
 				<nav>
-					<a href="#">Home</a>
-					<a href="#">About</a>
-					<a href="#">Contact</a>
+					<Link to="/products">Store</Link>
+					<Link to="/about-larche-cb">About</Link>
 				</nav>
 			</header>
-			<div className="layout">{children}</div>
+			<article className="layout">{children}</article>
 			<footer>
 				<h3 className="fake-logo">Fake Logo</h3>
 				<nav>
-					<a >Home</a>
-					<a >About</a>
-					<a >Contact</a>
+					<Link to="/kitchen-sink">Home</Link>
+					<Link to="/products">Store</Link>
 				</nav>
 			</footer>
-		</div>
+		</article>
 
 	)
 }

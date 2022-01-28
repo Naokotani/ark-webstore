@@ -53,7 +53,7 @@
     --buttonTextColor: var(--white);
 
 		--navTextColor: var(--white);
-		--navColor: var(--darkBlue);
+		--navColor: var(--lightBlue);
 
 		--footerColor: var(--blue);
 		--footerText: var(--white);
@@ -80,7 +80,7 @@
 
     /* Positioning */
     --containerPadding: 2.5%;
-    --headerHeight: 3rem;
+    --headerHeight: 5rem;
     --borderRadius: 5px;
 		--footerHeight: 9rem;
 		--headerFooterHeight: calc(var(--headerHeight) + var(--footerHeight));
@@ -123,6 +123,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 var(--containerPadding);
+		z-index: 10;
 }
 
 a {
@@ -133,6 +134,7 @@ a {
 header nav a {
     color: var(--white);
     text-decoration: none;
+		font-size: var(--h5);
 }
 
 header nav a:hover {
@@ -353,16 +355,12 @@ button.plain:hover {
 }
 
 .card {
-    background: var(--cardBg);
-		color: var(--cardText);
+		border: 1px solid var(--cardBg);
     margin: 10px;
     padding: 1em;
-    box-shadow: var(--level-3);
+    box-shadow: var(--level-1);
     border-radius: var(--borderRadius);
-}
-
-.card {
-	--primary: var(--darkBlue);
+		--primary: var(--darkBlue);
 }
 
 .card a {
@@ -388,3 +386,4 @@ button.plain:hover {
 .pointer {
     cursor: pointer;
 }
+

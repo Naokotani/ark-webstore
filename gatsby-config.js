@@ -19,7 +19,21 @@ module.exports = {
 			options: {
 				projectId: process.env.SANITY_ID,
 				dataset: "tbt",
+				token: process.env.SANITY_TOKEN,
+				watchMode: true,
+				overlayDrafts: true,
 			},
 		},
+		`gatsby-plugin-image`,
+		`gatsby-plugin-sharp`,
+		`gatsby-transformer-sharp`,
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `images`,
+				path: `${__dirname}/src/images/`,
+			},
+		},
+		`@sanity/block-content-to-react`,
 	]
 }
