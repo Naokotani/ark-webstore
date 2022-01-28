@@ -53,19 +53,7 @@ exports.createPages = async ({graphql, actions}) => {
           current
         }
         title
-        body {
-          _key
-          style
-          _rawChildren
-          _type
-          list
-          children {
-            text
-            marks
-            _type
-            _key
-          }
-        }
+				_rawBody
         author {
           name
         }
@@ -90,7 +78,7 @@ exports.createPages = async ({graphql, actions}) => {
 				slug: edge.node.slug.current,
 				title: edge.node.title,
 				author: edge.node.author.name,
-				node: edge.node,
+				body: edge.node._rawBody,
 			},
     })
   })

@@ -6,8 +6,8 @@ import { Link } from 'gatsby';
 
 export default function Layout({ children }) {
 	return (
-		<article>
-			<header>
+		<div>
+			<header className="nav">
 				<Link to="/kitchen-sink">
 				<StaticImage
 					src="../images/lcblogohd.png"
@@ -18,7 +18,7 @@ export default function Layout({ children }) {
 					<Link to="/about-larche-cb">About</Link>
 				</nav>
 			</header>
-			<article className="layout">{children}</article>
+			<main className="layout">{children}</main>
 			<footer>
 				<h3 className="fake-logo">Fake Logo</h3>
 				<nav>
@@ -26,7 +26,7 @@ export default function Layout({ children }) {
 					<Link to="/products">Store</Link>
 				</nav>
 			</footer>
-		</article>
+		</div>
 
 	)
 }

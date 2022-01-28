@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
-const TestGatsby = ({data}) => {
+const Post = ({data}) => {
 	console.log(data)
 	return (
 		<ul>
@@ -28,4 +28,4 @@ query {
 `
 
 
-export default TestGatsby;
+export default Post;

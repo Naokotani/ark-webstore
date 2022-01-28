@@ -10,26 +10,28 @@ const ProductsPage = ({ data }) => {
 		<Layout>
 			<h3>The Ark Store</h3>
 			<hr />
-			<Layout className="products--layout">
+			<ul className="products--layout">
 				{data.allShopifyProduct.edges.map(({ node }) => {
 					const image = getImage(node.images[0].gatsbyImageData)
 					return (
 						<Link key={node.shopifyId} to={`/products/${node.handle}`}>
-							<article className="products--card" className="card">
-								<h5 className="flex">
-									<Layout>
-									{node.title} 
-									</Layout>
-									{node.priceRangeV2.minVariantPrice.amount}
-								</h5>
+							<li className="products--card card">
+								<header className="flex">
+									<h5 >
+										{node.title}
+									</h5>
+									<aside>
+										{node.priceRangeV2.minVariantPrice.amount}
+									</aside>
+								</header>
 								<GatsbyImage image={image} alt={node.title} />
 								<section>
 								</section>
-							</article>
+							</li>
 						</Link>
 					)
 				})}
-			</Layout>
+			</ul>
 		</Layout >
 	)
 }

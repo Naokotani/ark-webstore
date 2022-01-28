@@ -3,7 +3,6 @@
 }
 
 .card h5 {
-	border-bottom: 1px solid var(--lineColor);
 }
 
 .card img {
@@ -31,5 +30,9 @@
 }
 
 .products--card {
-	box-shadow: var(--level-3);
+	transition: var(--cardTransition);
+}
+
+.products--card:hover {
+	box-shadow: var(--cardShadow);
 }
