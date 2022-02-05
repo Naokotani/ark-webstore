@@ -4,8 +4,7 @@ import {Link} from 'gatsby';
 const PortableLink = (props) => {
 	console.log(props)
 	return (
-		<div>
-		</div>
+		<span></span>
 	)
 }
 

@@ -1,14 +1,17 @@
 import React from 'react'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import {getGatsbyImageData} from 'gatsby-source-sanity'
+import { GatsbyImage } from "gatsby-plugin-image"
+import { getGatsbyImageData } from 'gatsby-source-sanity'
 
 const Figure = ({ node }) => {
 
-	const imageRef = node.asset._ref
+	console.log(node)
+	const imageRef = node.asset ?
+				node.asset._ref:
+				node.mainImage.asset._id
 
-	const sanityConfig = {projectId: '3u2gq4se', dataset: 'tbt'}
+	const sanityConfig = { projectId: '3u2gq4se', dataset: 'tbt' }
 
-	const image = getGatsbyImageData(imageRef, {maxWidth: 1024}, sanityConfig)
+	const image = getGatsbyImageData(imageRef, { maxWidth: 1024 }, sanityConfig)
 
 	return (
 		< figure >

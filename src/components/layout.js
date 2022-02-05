@@ -2,9 +2,25 @@ import React from "react"
 import "./layout/layout.css"
 import "./layout/normalize.css"
 import { StaticImage } from "gatsby-plugin-image"
-import { Link } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
 export default function Layout({ children }) {
+
+	const data = useStaticQuery(graphql`
+		query {
+			allSanityPage {
+				edges {
+					node {
+					  link
+						slug {
+              current
+            }
+					}
+				}
+			}
+		}
+`)
+	
 	return (
 		<div>
 			<header className="nav">
@@ -14,8 +30,14 @@ export default function Layout({ children }) {
 					alt="lol" />
 				</Link>
 				<nav>
+					{data.allSanityPage.edges.map(edge => (
+						<Link
+							key={edge.node.slug.current}
+							to={`/${edge.node.slug.current}`}>
+							{console.log(edge.node.slug.current)}{edge.node.link}
+						</Link>
+					))}
 					<Link to="/products">Store</Link>
-					<Link to="/about-larche-cape-breton">About</Link>
 				</nav>
 			</header>
 			<main className="layout">{children}</main>
