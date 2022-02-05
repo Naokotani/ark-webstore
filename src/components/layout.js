@@ -15,7 +15,7 @@ export default function Layout({ children }) {
 				</Link>
 				<nav>
 					<Link to="/products">Store</Link>
-					<Link to="/about-larche-cb">About</Link>
+					<Link to="/about-larche-cape-breton">About</Link>
 				</nav>
 			</header>
 			<main className="layout">{children}</main>

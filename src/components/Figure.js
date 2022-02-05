@@ -1,27 +1,18 @@
 import React from 'react'
-import {useStaticQuery, graphql} from 'gatsby';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import {getGatsbyImageData} from 'gatsby-source-sanity'
 
 const Figure = ({ node }) => {
-	const imageRef = "image-fdab30ca58f3a081d8dbc11652701410229791a3-1321x540-png";
 
-const data =useStaticQuery(graphql`
-query ImageQuery($imageRef: String) {
-		sanityImageAsset(id: {eq: $imageRef}) {
-				gatsbyImageData
-		}
-}
-`)
+	const imageRef = node.asset._ref
 
-	console.log(data.sanityImageAsset.gatsbyImageData)
-	
+	const sanityConfig = {projectId: '3u2gq4se', dataset: 'tbt'}
 
-	const image = getImage(data.sanityImageAsset.gatsbyImageData)
-	console.log(node);
+	const image = getGatsbyImageData(imageRef, {maxWidth: 1024}, sanityConfig)
 
 	return (
 		< figure >
-			<GatsbyImage image={image} alt={node.alt} />
+			<GatsbyImage image={image} alt='foo' />
 			<figcaption>{node.caption}</figcaption>
 		</figure>
 	)
