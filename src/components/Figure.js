@@ -5,9 +5,9 @@ import { getGatsbyImageData } from 'gatsby-source-sanity'
 const Figure = ({ node }) => {
 
 	console.log(node)
-	const imageRef = node.asset ?
-				node.asset._ref:
-				node.mainImage.asset._id
+	const imageRef = !node.asset ?
+				node.mainImage.asset._id:
+				node.asset._ref
 
 	const sanityConfig = { projectId: '3u2gq4se', dataset: 'tbt' }
 

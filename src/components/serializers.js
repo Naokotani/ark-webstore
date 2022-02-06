@@ -3,12 +3,14 @@ import Figure from './Figure'
 import PortableLink from './PortableLink';
 import PdfLink from './PdfLink'
 import House from './House'
+import Person from './Person'
 
 const serializers = {
 	container: ({ children }) => <React.Fragment>{children}</React.Fragment>,
 	types: {
 		image: Figure,
 		house: House,
+		person: Person,
 	},
 	marks: {
 		link: ({ children, mark }) =>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import serializers from '../components/serializers';
 
 const Page = ({ pageContext }) => {
