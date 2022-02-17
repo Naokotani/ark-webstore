@@ -6,51 +6,33 @@ import serializers from './serializers'
 
 const Person = (props) => {
 
-	let person;
+	console.log('Person Props: ')
+	console.log(props)
+	let role;
 
-	const data = useStaticQuery(graphql`
-query {
-  allSanityPerson {
-    edges {
-      node {
-        _rawBio
-        _id
-        mainImage {
-          asset {
-            _id
-          }
-        }
-        slug {
-          current
-        }
-        name
-        role
-      }
-    }
-  }
-}
-`)
+// 	const data = useStaticQuery(graphql`
+// `)
 
-	if (!props.person) {
+// 	console.log('Person data: ')
+// 	console.log(data)
 
-		data.allSanityPerson.edges.forEach(e => {
-			if (e.node._id === props.node._ref) {
-				person = e.node;
-			}
-		})
+// 	data.allSanityRoleGroup.edges.forEach(role => {
+// 		if (role.node._id === props.node._ref) {
+// 			role = role.node;
+// 		}
+// 		console.log('role: ')
+// 		console.log(role)
+// 	})
 
-	} else {
-		person = props.person
-	}
-
-	console.log(person)
 	return (
-		<article className="card">
-			<Figure node={person}/>
-			<h3>{person.name}</h3>
-			<h4>{person.role}</h4>
+		<article className="card products--card">
 		</article>
 	);
 }
 
 export default Person;
+
+			// <Figure node={person}/>
+			// <h3>{person.name}</h3>
+			// <h4>{person.role}</h4>
+			// <BlockContent blocks={person._rawBio} serializers={serializers}/>

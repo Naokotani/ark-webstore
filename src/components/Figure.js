@@ -14,7 +14,7 @@ const Figure = ({ node }) => {
 	const image = getGatsbyImageData(imageRef, { maxWidth: 1024 }, sanityConfig)
 
 	return (
-		< figure >
+		<figure>
 			<GatsbyImage image={image} alt='foo' />
 			<figcaption>{node.caption}</figcaption>
 		</figure>

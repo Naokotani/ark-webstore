@@ -10,7 +10,7 @@ const serializers = {
 	types: {
 		image: Figure,
 		house: House,
-		person: Person,
+		role: Person,
 	},
 	marks: {
 		link: ({ children, mark }) =>
