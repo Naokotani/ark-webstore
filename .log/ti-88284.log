@@ -1,0 +1,49 @@
+[00:24:54.630] Global cache location '/home/chris/.cache/typescript/4.5', safe file path '/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/typingSafeList.json', types map path /home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/typesMap.json
+[00:24:54.631] Processing cache location '/home/chris/.cache/typescript/4.5'
+[00:24:54.631] Trying to find '/home/chris/.cache/typescript/4.5/package.json'...
+[00:24:54.632] Loaded content of '/home/chris/.cache/typescript/4.5/package.json': {"private":true,"dependencies":{"types-registry":"^0.1.576"},"devDependencies":{"@types/bcrypt":"^5.0.0","@types/history":"^4.7.9","@types/inherits":"^0.0.30","@types/meteor":"^1.4.84","@types/object-assign":"^4.0.30","@types/prop-types":"^15.7.4","@types/react":"^17.0.37","@types/react-dom":"^17.0.11","@types/scheduler":"^0.16.2","@types/webfontloader":"^1.6.33"}}
+[00:24:54.632] Loaded content of '/home/chris/.cache/typescript/4.5/package-lock.json'
+[00:24:54.645] Adding entry into typings cache: 'bcrypt' => '/home/chris/.cache/typescript/4.5/node_modules/@types/bcrypt/index.d.ts'
+[00:24:54.648] Adding entry into typings cache: 'history' => '/home/chris/.cache/typescript/4.5/node_modules/@types/history/index.d.ts'
+[00:24:54.650] Adding entry into typings cache: 'inherits' => '/home/chris/.cache/typescript/4.5/node_modules/@types/inherits/index.d.ts'
+[00:24:54.655] Adding entry into typings cache: 'meteor' => '/home/chris/.cache/typescript/4.5/node_modules/@types/meteor/index.d.ts'
+[00:24:54.656] Adding entry into typings cache: 'object-assign' => '/home/chris/.cache/typescript/4.5/node_modules/@types/object-assign/index.d.ts'
+[00:24:54.659] Adding entry into typings cache: 'prop-types' => '/home/chris/.cache/typescript/4.5/node_modules/@types/prop-types/index.d.ts'
+[00:24:54.664] Adding entry into typings cache: 'react' => '/home/chris/.cache/typescript/4.5/node_modules/@types/react/index.d.ts'
+[00:24:54.666] Adding entry into typings cache: 'react-dom' => '/home/chris/.cache/typescript/4.5/node_modules/@types/react-dom/index.d.ts'
+[00:24:54.668] Adding entry into typings cache: 'scheduler' => '/home/chris/.cache/typescript/4.5/node_modules/@types/scheduler/index.d.ts'
+[00:24:54.670] Adding entry into typings cache: 'webfontloader' => '/home/chris/.cache/typescript/4.5/node_modules/@types/webfontloader/index.d.ts'
+[00:24:54.670] Finished processing cache location '/home/chris/.cache/typescript/4.5'
+[00:24:54.671] Process id: 88291
+[00:24:54.671] NPM location: /usr/bin/npm (explicit '--npmLocation' not  provided)
+[00:24:54.671] validateDefaultNpmLocation: false
+[00:24:54.671] Npm config file: /home/chris/.cache/typescript/4.5/package.json
+[00:24:54.671] Updating types-registry npm package...
+[00:24:54.671] Exec: /usr/bin/npm install --ignore-scripts types-registry@latest
+[00:24:54.683]     Failed. stdout:
+    stderr:
+    /bin/sh: line 1: /usr/bin/npm: No such file or directory
+    
+[00:24:54.683] Updated types-registry npm package
+[00:25:01.410] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es5.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2016.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.dom.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.dom.iterable.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.scripthost.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.core.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.collection.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.generator.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.iterable.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.promise.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.proxy.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.reflect.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.symbol.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2016.array.include.d.ts","/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/lib.es2016.full.d.ts","/home/chris/WebDev/sites/ark-webstore/src/components/Layout.js","/home/chris/WebDev/sites/ark-webstore/src/pages/products.js"],"compilerOptions":{"module":1,"target":3,"jsx":1,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":[],"projectRootPath":"/home/chris/WebDev/sites/ark-webstore/src/pages","kind":"discover"}
+[00:25:01.443] Loaded safelist from types map file '/home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/typesMap.json'
+[00:25:01.445] Explicitly included types: []
+[00:25:01.446] Inferred typings from unresolved imports: []
+[00:25:01.447] Result: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/home/chris/WebDev/sites/ark-webstore/src/components/bower_components","/home/chris/WebDev/sites/ark-webstore/src/components/node_modules","/home/chris/WebDev/sites/ark-webstore/src/pages/bower_components","/home/chris/WebDev/sites/ark-webstore/src/pages/node_modules"]}
+[00:25:01.447] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/home/chris/WebDev/sites/ark-webstore/src/components/bower_components","/home/chris/WebDev/sites/ark-webstore/src/components/node_modules","/home/chris/WebDev/sites/ark-webstore/src/pages/bower_components","/home/chris/WebDev/sites/ark-webstore/src/pages/node_modules"]}
+[00:25:01.448] DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/components/bower_components
+[00:25:01.448] DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/components/bower_components 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[00:25:01.451] Elapsed:: 2.2244129925966263ms DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/components/bower_components 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[00:25:01.451] DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/components/node_modules
+[00:25:01.451] DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/components/node_modules 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[00:25:01.451] Elapsed:: 0.19448299705982208ms DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/components/node_modules 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[00:25:01.452] DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/pages/bower_components
+[00:25:01.452] DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/pages/bower_components 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[00:25:01.452] Elapsed:: 0.18141299486160278ms DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/pages/bower_components 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[00:25:01.452] DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/pages/node_modules
+[00:25:01.452] DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/pages/node_modules 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[00:25:01.453] Elapsed:: 0.18704500794410706ms DirectoryWatcher:: Added:: WatchInfo: /home/chris/WebDev/sites/ark-webstore/src/pages/node_modules 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[00:25:01.453] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"module":1,"target":3,"jsx":1,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":[],"kind":"action::set"}
+[00:25:01.454] Response has been sent.
+[00:25:01.454] No new typings were requested as a result of typings discovery

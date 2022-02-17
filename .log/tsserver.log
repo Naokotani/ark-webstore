@@ -1,0 +1,20 @@
+Info 0    [12:56:36.809] Starting TS Server
+Info 1    [12:56:36.809] Version: 4.5.4
+Info 2    [12:56:36.809] Arguments: /usr/bin/node /home/chris/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/tsserver.js --logFile /home/chris/WebDev/sites/ark-webstore/.log/tsserver.log --logVerbosity info --cancellationPipeName /tmp/f0d0ca046ce398d6b928c6d0a6e840fa/tscancellation*
+Info 3    [12:56:36.809] Platform: linux NodeVersion: 17 CaseSensitive: true
+Info 4    [12:56:36.809] ServerMode: undefined syntaxOnly: false hasUnknownServerMode: undefined
+Info 5    [12:56:36.833] Format host information updated
+Info 6    [12:56:36.838] Search path: /home/chris/WebDev/sites/ark-webstore/src/components
+Info 7    [12:56:36.840] For info: /home/chris/WebDev/sites/ark-webstore/src/components/Role.js :: No config files found.
+Info 8    [12:56:36.849] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 9    [12:56:42.434] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 5583.842206001282ms
+Info 10   [12:56:42.434] Project '/dev/null/inferredProject1*' (Inferred)
+Info 11   [12:56:42.434] 	Files (387)
+
+Info 12   [12:56:42.434] -----------------------------------------------
+Info 13   [12:56:42.466] Starting updateGraphWorker: Project: /dev/null/autoImportProviderProject1*
+Info 14   [12:56:43.711] Finishing updateGraphWorker: Project: /dev/null/autoImportProviderProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 1245.1779140233994ms
+Info 15   [12:56:43.711] Project '/dev/null/autoImportProviderProject1*' (AutoImportProvider)
+Info 16   [12:56:43.711] 	Files (395)
+
+Info 17   [12:56:43.711] -----------------------------------------------
