@@ -20,6 +20,10 @@ export default function Layout({ children }) {
     }
   `);
 
+  const links = data.allSanityPage.edges.filter(
+    (edge) => edge.node.slug.current != "l-arche-cape-breton"
+  );
+
   return (
     <div>
       <header className="nav">
@@ -27,13 +31,12 @@ export default function Layout({ children }) {
           <StaticImage src="../images/lcblogohd.png" alt="lol" />
         </Link>
         <nav>
-          {data.allSanityPage.edges.map((edge) => (
+          {links.map((link) => (
             <Link
-              key={edge.node.slug.current}
-              to={`/${edge.node.slug.current}`}
+              key={link.node.slug.current}
+              to={`/${link.node.slug.current}`}
             >
-              {console.log(edge.node.slug.current)}
-              {edge.node.link}
+              {link.node.link}
             </Link>
           ))}
           <Link to="/products">Store</Link>

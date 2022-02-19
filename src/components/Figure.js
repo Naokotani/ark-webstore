@@ -4,7 +4,6 @@ import { getGatsbyImageData } from 'gatsby-source-sanity'
 
 const Figure = ({ node }) => {
 
-	console.log(node)
 	const imageRef = !node.asset ?
 				node.mainImage.asset._id:
 				node.asset._ref
