@@ -43,7 +43,7 @@ const House = (props) => {
         <BlockContent blocks={house._rawBody} serializers={serializers} />
       </section>
       <aside>
-        <Figure node={house} />
+        <Figure id={house.mainImage.asset._id} />
       </aside>
     </article>
   );

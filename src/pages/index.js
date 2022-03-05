@@ -10,11 +10,11 @@ import Layout from "../components/Layout";
 
 const HomePage = ({ data }) => {
   const page = data.sanityPage;
-  const imageRef = "image-8accacab0215cf8dbc689dcd9882b1e9908fb40f-225x300-jpg";
+  // const imageRef = "image-8accacab0215cf8dbc689dcd9882b1e9908fb40f-225x300-jpg";
 
-  const sanityConfig = { projectId: "3u2gq4se", dataset: "tbt" };
+  // const sanityConfig = { projectId: "3u2gq4se", dataset: "tbt" };
 
-  const image = getGatsbyImageData(imageRef, { maxWidth: 1024 }, sanityConfig);
+  // const image = getGatsbyImageData(imageRef, { maxWidth: 1024 }, sanityConfig);
 
   return (
     <Layout>

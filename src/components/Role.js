@@ -64,9 +64,9 @@ const Role = (props) => {
   return (
     <div className="products--layout">
       {people.map((person) => (
-        <Link to={`/team/${person.node.slug}`}>
+        <Link to={`/profile/${person.node.slug.current}`}>
           <section className="card products--card" key={person.node._id}>
-            <Figure node={person.node} />
+            <Figure id={person.node.mainImage.asset._id} />
             <h3 className="h4">{person.node.name}</h3>
             <h4 className="h5">{person.node.role}</h4>
           </section>

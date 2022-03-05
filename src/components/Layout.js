@@ -21,7 +21,7 @@ export default function Layout({ children }) {
   `);
 
   const links = data.allSanityPage.edges.filter(
-    (edge) => edge.node.slug.current != "l-arche-cape-breton"
+    (edge) => edge.node.slug.current !== "l-arche-cape-breton"
   );
 
   return (

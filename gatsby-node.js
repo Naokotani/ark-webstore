@@ -1,10 +1,14 @@
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
+
+
+
+
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions
-	// Query for all products in Shopify
-	const result = await graphql(`
+
+//Create Pages for shopify
+	const shop = await graphql(`
     query {
       allShopifyProduct(sort: { fields: [title] }) {
         edges {
@@ -32,7 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 	// Iterate over all products and create a new page using a template
 	// The product "handle" is generated automatically by Shopify
-	result.data.allShopifyProduct.edges.forEach(({ node }) => {
+	shop.data.allShopifyProduct.edges.forEach(({ node }) => {
 		createPage({
 			path: `/products/${node.handle}`,
 			component: path.resolve(`./src/templates/product.js`),
@@ -41,56 +45,55 @@ exports.createPages = async ({ graphql, actions }) => {
 			},
 		})
 	})
-}
 
-exports.createPages = async ({ graphql, actions }) => {
-	const { createPage } = actions
-
-	const result = await graphql(`
-{
-  allSanityPost {
+//Create pages for personal profiles.
+	const personQuery = await graphql(`
+query {
+  allSanityPerson {
     edges {
       node {
+        role
+        name
+        mainImage {
+          asset {
+            _id
+            gatsbyImageData
+          }
+        }
         slug {
           current
         }
-        title
-				_rawBody
-        author {
-          name
-        }
+        _rawBio
       }
     }
   }
 }
+
  `)
 
-	if (result.errors) {
-		throw result.errors
+	if (personQuery.errors) {
+		throw personQuery.errors
 	}
 
-	const projects = result.data.allSanityPost.edges || []
-	projects.forEach((edge, index) => {
-		const path = `/posts/${edge.node.slug.current}`
+	const people = personQuery.data.allSanityPerson.edges || []
+	people.forEach((edge) => {
+		const path = `/profile/${edge.node.slug.current}`
 
 		createPage({
 			path,
-			component: require.resolve('./src/templates/post.js'),
+			component: require.resolve('./src/templates/person.js'),
 			context: {
+				role: edge.node.role,
+				name: edge.node.name,
+				image: edge.node.mainImage,
 				slug: edge.node.slug.current,
-				title: edge.node.title,
-				author: edge.node.author.name,
-				body: edge.node._rawBody,
+				body: edge.node._rawBio,
 			},
 		})
 	})
-}
-
-exports.createPages = async ({ graphql, actions }) => {
-	const { createPage } = actions
-
-	const result = await graphql(`
-{
+//Create generic pages
+	const pageQuery = await graphql(`
+query {
   allSanityPage {
     edges {
       node {
@@ -105,12 +108,12 @@ exports.createPages = async ({ graphql, actions }) => {
   }
  `)
 
-	if (result.errors) {
-		throw result.errors
+	if (pageQuery.errors) {
+		throw pageQuery.errors
 	}
 
-	const projects = result.data.allSanityPage.edges || []
-	projects.forEach((edge, index) => {
+	const pages = pageQuery.data.allSanityPage.edges || []
+	pages.forEach((edge) => {
 		const path = `/${edge.node.slug.current}`
 
 		createPage({
@@ -123,100 +126,49 @@ exports.createPages = async ({ graphql, actions }) => {
 			},
 		})
 	})
+// Create News and events pages
+  const postQuery = await graphql(`
+{
+  allSanityPost {
+    edges {
+      node {
+        slug {
+          current
+        }
+        title
+        _rawBody
+        mainImage {
+          asset {
+            _id
+          }
+        }
+        publishedAt
+        date
+      }
+    }
+  }
 }
+  `)
 
+  if (postQuery.errors) {
+    throw postQuery.errors
+  }
 
-// exports.createPages = async ({ graphql, actions }) => {
+  const posts = postQuery.data.allSanityPost.edges || []
+  posts.forEach((edge, index) => {
+    const path = `/post/${edge.node.slug.current}`
 
-// 	const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
-
-// 	const { createPage } = actions
-
-// 	const result = await graphql(`
-// query MyQuery {
-//   allSanityPdf {
-//     edges {
-//       node {
-//         file {
-//           asset {
-//             url
-//             id
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-//  `)
-
-// 	const projects = result.data.allSanityPdf.edges || []
-
-// 	projects.forEach(async (edge) => {
-
-// 	 await createRemoteFileNode({
-// 			url: edge.node.file.asset.url,
-// 			parentNodeId: edge.node.file.asset.id,
-// 			getCache,
-// 			createNode,
-// 			createNodeId
-// 	 })
-
-// 		const path = `/${result.edge.node.file.asset.id}`
-
-// 		createPage({
-// 			path,
-// 			component: require.resolve('./src/templates/pdf.js'),
-// 			context: {
-// 			},
-// 		})
-// 	})
-// }
-
-// exports.onCreateNode = async ({
-// 	node,
-// 	actions: { createNode },
-// 	createNodeId,
-// 	getCache,
-// }) => {
-// 	if (node.internal.type === "SanityPdf") {
-// 		console.log(node)
-// 		const url = 'https://cdn.sanity.io/files/3u2gq4se/tbt/' + node.file.asset._ref.slice(5, -4) + '.pdf';
-// 		node.pdfFile = await createRemoteFileNode({
-// 			url: url,
-// 			parentNodeId: node._id,
-// 			createNode,
-// 			createNodeId,
-// 			getCache
-// 		})
-// 		console.log(node.pdfFile)
-// 	}
-// }
-// exports.createResolvers = async ({
-//   actions,
-//   cache,
-//   createNodeId,
-//   createResolvers,
-//   store,
-//   reporter,
-// }) => {
-//   const { createNode } = actions
-
-//   await createResolvers({
-//     sanityPdf: {
-//       file: {
-//         type: 'File',
-//         async resolve(source, args, context, info) {
-//           let sourceUrl = `http://localhost:1337${source.url}`
-//           return await createRemoteFileNode({
-//             url: encodeURI(sourceUrl),
-//             store,
-//             cache,
-//             createNode,
-//             createNodeId,
-//             reporter,
-//           })
-//         },
-//       },
-//     },
-//   })
-// }
+    createPage({
+      path,
+      component: require.resolve('./src/templates/post.js'),
+      context: {
+				slug: edge.node.slug.current,
+				title: edge.node.title,
+				published: edge.node.publishedAt,
+				date: edge.node.date,
+				image: edge.node.mainImage,
+				body: edge.node._rawBody,
+			},
+    })
+  })
+}
