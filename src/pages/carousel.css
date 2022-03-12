@@ -1,0 +1,32 @@
+.carousel section {
+	color: var(--white);
+	background-color: rgba(1,1,1,0.5);
+	font-family: var(--bodyFont);
+	border-radius: 5px;
+	padding: 0 1rem;
+
+}
+	
+.carousel--bottom-right {
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
+}
+
+.carousel--top-right {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+}
+
+.carousel--bottom-left {
+  position: absolute;
+  bottom: 2rem;
+  left: 3rem;
+}
+
+.carousel--top-left {
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+}
