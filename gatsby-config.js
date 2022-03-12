@@ -35,5 +35,6 @@ module.exports = {
 			},
 		},
 		`@sanity/block-content-to-react`,
+		`react-responsive-carousel`,
 	]
 }

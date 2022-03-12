@@ -17,9 +17,9 @@ const ProductsPage = ({ data }) => {
 						<Link key={node.shopifyId} to={`/products/${node.handle}`}>
 							<li className="products--card card">
 								<header className="flex">
-									<h5 >
+									<h3 >
 										{node.title}
-									</h5>
+									</h3>
 									<aside>
 										{node.priceRangeV2.minVariantPrice.amount}
 									</aside>
