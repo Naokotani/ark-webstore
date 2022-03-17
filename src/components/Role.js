@@ -41,12 +41,20 @@ const Role = (props) => {
     }
   `);
 
+	//Find the matching role from the role reference
   const role = data.allSanityRoleComponent.edges.filter(
     (role) => role.node._id === props.node._ref
   );
+
+	//Copy the list of person objects
   let p = data.allSanityPerson.edges;
 
+	//Create an empty list for people
   let people = [];
+
+	/* If the number is true and the lenth of the list of people is equal to 
+or greater than nubmer then while the people list is shorter than number
+add a random person that has not been added to the people list. */
   if (role[0].node.number && p.length >= role[0].node.number) {
     while (people.length < role[0].node.number) {
       const item = p[Math.floor(Math.random() * p.length)];
@@ -56,6 +64,7 @@ const Role = (props) => {
     }
   } else if (people.length < role[0].node.number) {
     console.error("Not enough Items in array.");
+		//Otherwise finde the specific person to display
   } else {
 		const names = role[0].node.specific.map(e => {return e.name})
 		people = p.filter(person => names.some(name => name === person.node.name))

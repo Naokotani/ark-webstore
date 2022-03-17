@@ -2,24 +2,35 @@ import * as React from "react";
 import Figure from "../components/Figure"
 import "./index.css";
 import "./carousel.css";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import BlockContent from "@sanity/block-content-to-react";
 import serializers from "../components/serializers";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import Layout from "../components/Layout";
-import { StaticImage } from "gatsby-plugin-image";
 
 const HomePage = ({ data }) => {
 	const page = data.sanityPage;
 	const carousel = data.allSanityCarousel;
 
 	console.log(carousel)
-	// const imageRef = "image-8accacab0215cf8dbc689dcd9882b1e9908fb40f-225x300-jpg";
 
-	// const sanityConfig = { projectId: "3u2gq4se", dataset: "tbt" };
-
-	// const image = getGatsbyImageData(imageRef, { maxWidth: 1024 }, sanityConfig);
+	const textPosition = (position) => {
+		if (position === 'Top Left'){
+			return 'carousel--top-left'; 
+		}
+		if (position === 'Top Right') {
+			return 'carousel--top-right';
+		}
+			
+		if (position === 'Bottom Right') {
+			return 'carousel--bottom-right';
+		}
+			
+		if (position === 'Bottom Left') {
+			return 'carousel--bottom-left';
+		}
+	}
 
 	return (
 		<Layout>
@@ -33,10 +44,12 @@ const HomePage = ({ data }) => {
 				{carousel.edges.map(({ node }) => (
 					<div className="carousel">
 						<Figure id={node.mainImage.asset._id} />
-						<section className="carousel--top-left">
+						<Link to={`/${node.link._rawSlug.current}`}>
+						<section className={textPosition(node.textPosition)}>
 							<h3>{node.name}</h3>
 							<p>{node.text}</p>
 						</section>
+						</Link>
 					</div>
 				))}
 			</Carousel>
@@ -54,18 +67,19 @@ export const query = graphql`
     }
 		allSanityCarousel {
 				edges {
-				node {
-						text
-						name
-						link {
-						_rawSlug
+						node {
+								text
+								textPosition	
+								name
+								link {
+										_rawSlug
+								}
+								mainImage {
+										asset {
+												_id
+										}
+								}
 						}
-						mainImage {
-						asset {
-								_id
-						}
-						}
-				}
 				}
 		}
   }

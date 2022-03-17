@@ -1,9 +1,10 @@
 import React from 'react'
 import Figure from './Figure'
 import PortableLink from './PortableLink';
-import PdfLink from './PdfLink'
-import House from './House'
-import Role from './Role'
+import PdfLink from './PdfLink';
+import House from './House';
+import Role from './Role';
+import Post from './Post';
 
 const serializers = {
 	container: ({ children }) => <React.Fragment>{children}</React.Fragment>,
@@ -11,6 +12,7 @@ const serializers = {
 		roleComponent: Role,
 		image: Figure,
 		house: House,
+		postComponent: Post,
 	},
 	marks: {
 		link: ({ children, mark }) =>
