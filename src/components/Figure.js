@@ -3,9 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { getGatsbyImageData } from "gatsby-source-sanity";
 
 const Figure = ({ node, id }) => {
-  console.log(id);
   const imageRef = node ? node.asset._ref : id;
-  console.log(imageRef);
 
   const sanityConfig = { projectId: "3u2gq4se", dataset: "tbt" };
 
