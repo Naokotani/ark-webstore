@@ -19,11 +19,12 @@ export default function Layout({ children }) {
       }
     }
   `);
-
+  // Remove the home page link with the slug "l-arche-cape-breton"
   const links = data.allSanityPage.edges.filter(
     (edge) => edge.node.slug.current !== "l-arche-cape-breton"
   );
-
+	// return the header with the nav, logo/link, link menu, and the footer. Children are
+	// in the main tag.
   return (
     <div>
       <header className="nav">

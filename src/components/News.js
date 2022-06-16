@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/serializers';
 import Figure from '../components/Figure'
@@ -38,14 +38,27 @@ query {
 		posts = data.allSanityPost.edges
 	}
 
+
 	return (
-		<div>
-			<h2>News</h2>
+		<div className="">
+			<ul className="post--layout">
 			{posts.map((post) => (
-				<div>
-					<p>{post.node.title}</p>
+				<div className="post--card card grid">
+					<article className="aside-left">
+						<h3>{post.node.title}</h3>
+						<p>{post.node.date}</p>
+						<BlockContent
+							blocks={post.node._rawBody}
+							serializers={serializers} />
+					</article>
+					<aside className="aside-right">
+						{post.node.mainImage &&
+						 <Figure id={post.node.mainImage.asset._id} />
+						}
+					</aside>
 				</div>
 			))}
+			</ul>
 		</div>
 	)
 }

@@ -239,6 +239,10 @@ hr {
     border-top: var(--line);
 }
 
+figure {
+	margin: 0;
+}
+
 button {
     --buttonColor: var(--primary);
 

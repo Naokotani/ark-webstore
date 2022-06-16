@@ -53,7 +53,6 @@ const HomePage = ({ data }) => {
 					</div>
 				))}
 			</Carousel>
-			<h1>{page.title}</h1>
 			<BlockContent blocks={page._rawBody} serializers={serializers} />
 		</Layout>
 	);
