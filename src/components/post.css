@@ -17,3 +17,15 @@
 .post--card:hover {
 	box-shadow: var(--cardShadow);
 }
+
+.post--card h5 {
+	margin: 0;
+}
+
+.post button {
+	margin-right: 1rem;
+}
+
+.post div {
+	margin-bottom: 1rem;
+}
