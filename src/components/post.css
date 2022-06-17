@@ -24,8 +24,17 @@
 
 .post button {
 	margin-right: 1rem;
+	margin-left: 28px;
+}
+
+.post button:hover {
+	margin-right: 1rem;
 }
 
 .post div {
 	margin-bottom: 1rem;
+}
+
+.post aside {
+	max-height: 200px;
 }

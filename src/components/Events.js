@@ -39,14 +39,6 @@ query {
 	// If here are enough event posts then slice the array of posts up
 	// to that number, or if it is less, then diplay all posts. 
 
-	useEffect(() => {
-		if (data.allSanityPost.edges.length > postNum) {
-			setPosts(data.allSanityPost.edges.slice(0, postNum));
-		} else {
-			setPosts(data.allSanityPost.edges);
-		}
-	}, [postNum])
-
 	const handleNext = () => {
 		setPosts([
 			...posts.slice(postNum - 1),
@@ -61,21 +53,28 @@ query {
 		])
 	}
 
+	useEffect(() => {
+		if (data.allSanityPost.edges.length > postNum) {
+			setPosts(data.allSanityPost.edges.slice(0, postNum));
+		} else {
+			setPosts(data.allSanityPost.edges);
+		}
+	}, [postNum])
 
 	// Create an h3 for each event post title.
 	return (
 		<div className="post">
 			<div className="underline">
-				<h2>Upcoming news and Events</h2>
+				<h2>Upcoming News and Events</h2>
 			</div>
+			<ul className="">
 			<button
 				className="post--next"
 				onClick={() => handleNext()}>&#8592;</button>
 			<button
 				onClick={() => handlePrev()}>&#8594;</button>
-			<ul className="">
 				{posts[0] &&
-					<div className="post--card card">
+					<div className="post--card card grid">
 						<article className="aside-left">
 							<h3>{posts[0].node.title}</h3>
 							<p>{posts[0].node.date}</p>
@@ -83,6 +82,11 @@ query {
 								blocks={posts[0].node._rawBody}
 								serializers={serializers} />
 						</article>
+						<aside className="aside-right">
+							{posts[0].node.mainImage &&
+								<Figure id={posts[0].node.mainImage.asset._id} />
+							}
+						</aside>
 					</div>
 				}
 				{posts.slice(1).map((post) => (
