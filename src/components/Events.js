@@ -75,7 +75,7 @@ query {
 				<button
 					onClick={() => handlePrev()}>&#8594;</button>
 				{posts[0] &&
-					<Link to={`/posts/${posts[0].node.slug.current}`}>
+					<Link to={`/post/${posts[0].node.slug.current}`}>
 						<div className="post--card card grid">
 							{posts[0].node.mainImage &&
 								<aside className="flex">
@@ -93,7 +93,7 @@ query {
 					</Link>
 				}
 				{posts.slice(1).map((post) => (
-					<Link to={`/posts/${post.node.slug.current}`}>
+					<Link to={`/post/${post.node.slug.current}`}>
 						<div className="post--card card">
 							<article className="">
 								<h5>{post.node.title}</h5>

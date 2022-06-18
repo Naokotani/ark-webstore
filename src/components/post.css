@@ -4,7 +4,7 @@
   display: grid;
   grid-gap: 10px;
   /* fit as many columns as possible, 180px wide each: */
-  grid-template-columns: repeat(auto-fill, 800px);
+  grid-template-columns: repeat(auto-fill, 400px);
   /* each row is 20px high -- we always span 2+ */
   grid-auto-rows: minmax(20px, auto);
   justify-content: center;	

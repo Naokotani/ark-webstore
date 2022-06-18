@@ -74,7 +74,7 @@ add a random person that has not been added to the people list. */
 		<div className="post">
 			<div className="flex underline">
 				<h2>{role[0].node.title}</h2>
-				<Link to="/posts">See All News and Events</Link>
+				<Link to="/people">See All Community Members</Link>
 			</div>
 			<div className="products--layout">
 				{people.map((person) => (
