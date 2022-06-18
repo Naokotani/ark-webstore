@@ -259,7 +259,7 @@ button {
 
 button:hover {
     box-shadow:var(--level-2);
-    border: solid 2px var(--medGreyBlue);
+    border: solid 2px var(--darkBlue);
     margin: 0;
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/serializers';
 import Figure from '../components/Figure'
-import { useStaticQuery, graphql } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import "./post.css"
 
 const Events = ({ sort, number }) => {
@@ -64,37 +64,42 @@ query {
 	// Create an h3 for each event post title.
 	return (
 		<div className="post">
-			<div className="underline">
+			<div className="flex underline">
 				<h2>Upcoming News and Events</h2>
+				<Link to="/posts">See All News and Events</Link>
 			</div>
 			<ul className="">
-			<button
-				className="post--next"
-				onClick={() => handleNext()}>&#8592;</button>
-			<button
-				onClick={() => handlePrev()}>&#8594;</button>
+				<button
+					className=""
+					onClick={() => handleNext()}>&#8592;</button>
+				<button
+					onClick={() => handlePrev()}>&#8594;</button>
 				{posts[0] &&
-					<div className="post--card card grid">
-						<article className="aside-left">
-							<h3>{posts[0].node.title}</h3>
-							<p>{posts[0].node.date}</p>
-							<BlockContent
-								blocks={posts[0].node._rawBody}
-								serializers={serializers} />
-						</article>
-						<aside className="aside-right">
+					<Link to={`/posts/${posts[0].node.slug.current}`}>
+						<div className="post--card card grid">
 							{posts[0].node.mainImage &&
-								<Figure id={posts[0].node.mainImage.asset._id} />
+								<aside className="flex">
+									<Figure id={posts[0].node.mainImage.asset._id} />
+								</aside>
 							}
-						</aside>
-					</div>
+							<article className="">
+								<h3>{posts[0].node.title}</h3>
+								<p>{posts[0].node.date}</p>
+								<BlockContent
+									blocks={posts[0].node._rawBody}
+									serializers={serializers} />
+							</article>
+						</div>
+					</Link>
 				}
 				{posts.slice(1).map((post) => (
-					<div className="post--card card">
-						<article className="aside-left">
-							<h5>{post.node.title}</h5>
-						</article>
-					</div>
+					<Link to={`/posts/${post.node.slug.current}`}>
+						<div className="post--card card">
+							<article className="">
+								<h5>{post.node.title}</h5>
+							</article>
+						</div>
+					</Link>
 				))}
 			</ul>
 		</div >

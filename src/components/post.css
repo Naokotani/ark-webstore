@@ -10,6 +10,14 @@
   justify-content: center;	
 }
 
+.post h2 {
+	margin-bottom: 0;
+}
+
+.post > .post--card {
+	height: 300px;
+}
+
 .post--card {
 	transition: var(--cardTransition);
 }
@@ -18,23 +26,29 @@
 	box-shadow: var(--cardShadow);
 }
 
-.post--card h5 {
+.post--card h3, h5 {
 	margin: 0;
 }
 
 .post button {
-	margin-right: 1rem;
-	margin-left: 28px;
+	margin: 2px 28px 2px 26px;
 }
 
 .post button:hover {
-	margin-right: 1rem;
+	margin: 0 26px 0 26px;
 }
 
-.post div {
-	margin-bottom: 1rem;
+.post > div {
+	margin-bottom: 3rem;
+	align-items: flex-end;
 }
 
-.post aside {
+.post img {
 	max-height: 200px;
+	margin: 0;
+}
+
+.post .grid {
+    grid-template-columns: 300px auto;
+    grid-gap: 20px;
 }
