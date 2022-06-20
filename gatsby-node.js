@@ -3,16 +3,13 @@ const path = require(`path`)
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions
 
-//Create Pages for shopify
+	// Create Pages for shopify
 	const shop = await graphql(`
     query {
       allShopifyProduct(sort: { fields: [title] }) {
         edges {
           node {
             title
-            images {
-              originalSrc
-            }
             shopifyId
             handle
             description
@@ -25,11 +22,15 @@ exports.createPages = async ({ graphql, actions }) => {
               }
             }
             status
+						variants {
+							shopifyId
+						}
           }
         }
       }
     }
   `)
+	console.log(shop)
 	// Iterate over all products and create a new page using a template
 	// The product "handle" is generated automatically by Shopify
 	shop.data.allShopifyProduct.edges.forEach(({ node }) => {
@@ -42,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
-//Create pages for personal profiles.
+	//Create pages for personal profiles.
 	const personQuery = await graphql(`
 query {
   allSanityPerson {
@@ -87,7 +88,7 @@ query {
 			},
 		})
 	})
-//Create generic pages
+	//Create generic pages
 	const pageQuery = await graphql(`
 query {
   allSanityPage {
@@ -122,8 +123,8 @@ query {
 			},
 		})
 	})
-// Create News and events pages
-  const postQuery = await graphql(`
+	// Create News and events pages
+	const postQuery = await graphql(`
 {
   allSanityPost {
     edges {
@@ -139,25 +140,25 @@ query {
           }
         }
         publishedAt
-        date
+        date(formatString: "dddd MMMM Do, YYYY hh:mma")
       }
     }
   }
 }
   `)
 
-  if (postQuery.errors) {
-    throw postQuery.errors
-  }
+	if (postQuery.errors) {
+		throw postQuery.errors
+	}
 
-  const posts = postQuery.data.allSanityPost.edges || []
-  posts.forEach((edge, index) => {
-    const path = `/post/${edge.node.slug.current}`
+	const posts = postQuery.data.allSanityPost.edges || []
+	posts.forEach((edge, index) => {
+		const path = `/post/${edge.node.slug.current}`
 
-    createPage({
-      path,
-      component: require.resolve('./src/templates/post.js'),
-      context: {
+		createPage({
+			path,
+			component: require.resolve('./src/templates/post.js'),
+			context: {
 				slug: edge.node.slug.current,
 				title: edge.node.title,
 				published: edge.node.publishedAt,
@@ -165,6 +166,6 @@ query {
 				image: edge.node.mainImage,
 				body: edge.node._rawBody,
 			},
-    })
-  })
+		})
+	})
 }

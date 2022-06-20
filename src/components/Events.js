@@ -9,7 +9,7 @@ const Events = ({ sort, number }) => {
 
 	const data = useStaticQuery(graphql`
 query {
-  allSanityPost(limit: 10) {
+			allSanityPost(sort: {order: DESC, fields: _createdAt}, limit: 10) {
     edges {
       node {
         title
@@ -23,7 +23,7 @@ query {
           }
         }
         _rawBody
-				date
+				date(formatString: "dddd MMMM Do, YYYY hh:mma")
         author {
           name
         }

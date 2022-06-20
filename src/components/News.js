@@ -5,6 +5,7 @@ import Figure from '../components/Figure'
 import { useStaticQuery, graphql } from "gatsby";
 
 const News = ({ sort, number }) => {
+	
 	const data = useStaticQuery(graphql`
 query {
   allSanityPost(filter: {type: {eq: "News"}}, limit: 10) {

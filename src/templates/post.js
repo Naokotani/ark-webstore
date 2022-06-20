@@ -16,7 +16,7 @@ const Posts = ({ pageContext }) => {
 				{post.title}
 			</h1>
 			<h3>{post.slug}</h3>
-			<h3>{post.published}</h3>
+			<h3>{post.date}</h3>
 			{post.image &&
 				<Figure id={post.image.asset._id} />
 			}

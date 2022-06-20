@@ -12,10 +12,11 @@ const ProductsPage = ({ data }) => {
 			<hr />
 			<ul className="products--layout">
 				{data.allShopifyProduct.edges.map(({ node }) => {
-					const image = getImage(node.images[0].gatsbyImageData)
+					const image = getImage(node.featuredImage.gatsbyImageData)
 					return (
 						<Link key={node.shopifyId} to={`/products/${node.handle}`}>
 							<li className="products--card card">
+								<GatsbyImage image={image} alt={node.title} />
 								<header className="flex">
 									<h3 >
 										{node.title}
@@ -24,7 +25,6 @@ const ProductsPage = ({ data }) => {
 										{node.priceRangeV2.minVariantPrice.amount}
 									</aside>
 								</header>
-								<GatsbyImage image={image} alt={node.title} />
 								<section>
 								</section>
 							</li>
@@ -44,6 +44,9 @@ export const query = graphql`
     edges {
       node {
         title
+				featuredImage {
+					gatsbyImageData
+				}
         shopifyId
         description
         handle
@@ -51,9 +54,6 @@ export const query = graphql`
           minVariantPrice {
             amount
           }
-        }
-        images {
-          gatsbyImageData
         }
       }
     }

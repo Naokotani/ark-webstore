@@ -29,7 +29,7 @@ const Post = ({ data }) => {
 
 export const query = graphql`
 query {
-  allSanityPost {
+  allSanityPost(sort: {order: DESC, fields: _createdAt}) {
     edges {
       node {
 				id
@@ -44,7 +44,7 @@ query {
           }
         }
         _rawBody
-				date
+				date(formatString: "dddd MMMM Do, YYYY hh:mma")
         author {
           name
         }

@@ -16,15 +16,20 @@
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",
+    "dotenv": "^16.0.1",
     "gatsby": "^4.5.4",
     "gatsby-plugin-image": "^2.5.2",
+    "gatsby-plugin-modal-routing": "^1.2.0",
     "gatsby-plugin-sharp": "^4.5.2",
     "gatsby-source-filesystem": "^4.5.2",
     "gatsby-source-sanity": "^7.3.2",
-    "gatsby-source-shopify": "^6.5.2",
+    "gatsby-source-shopify": "^7.5.1",
+    "gatsby-source-shopify2": "^2.0.7",
     "gatsby-transformer-sharp": "^4.5.0",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-dom": "^17.0.1",
-    "react-responsive-carousel": "^3.2.23"
+    "react-responsive-carousel": "^3.2.23",
+    "react-router": "^6.3.0",
+    "shopify-buy": "^2.15.1"
   }
 }
