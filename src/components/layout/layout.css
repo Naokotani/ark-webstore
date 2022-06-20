@@ -91,6 +91,7 @@
 
 /*From type-scale.com*/
 
+
 html {
     /*18px*/
     font-size: var(--baseFontSize);
@@ -391,3 +392,13 @@ button.plain:hover {
     cursor: pointer;
 }
 
+
+.nav .main-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.nav .store {
+	margin-right: 10px;
+}
