@@ -37,38 +37,28 @@ const Checkout = () => {
 		addItem(id, q)
 	}
 
-	//const handleQuantitState = () => {
-	//set
-	//}
-
 	return (
 		<Layout>
-			<table>
-				<tr>
-					<th>Header</th>
-					<td>content</td>
-					<td>content</td>
-					<td>content</td>
-				</tr>
-			</table>
+			<h1 className="underline">Your Cart</h1>
 			{!cartItems &&
 				<h1>Your Cart is Empty</h1>
 			}
+			{cartItems &&
 			<table>
 				<thead>
 					<tr>
-						<th>Item</th>
-						<th>quantity</th>
-						<th>price</th>
+						<th className="border">Item</th>
+						<th className="border">quantity</th>
+						<th className="border">price</th>
 					</tr>
 				</thead>
 				{cartItems.map(item => (
 					<tbody>
 						<tr>
-							<td>{item.title}</td>
-							<td className="number">{item.quantity}</td>
-							<td className="number">{item.variant.priceV2.amount}</td>
-							<td scope="col" key={item.id}>
+							<td className="border">{item.title}</td>
+							<td className="number border">{item.quantity}</td>
+							<td className="number border">{item.variant.priceV2.amount}</td>
+							<td key={item.id}>
 								<button
 									onClick={() => handleRemove(item.id)}>
 									Remove</button>
@@ -77,6 +67,7 @@ const Checkout = () => {
 					</tbody>
 				))}
 			</table>
+			}
 			<p>Subtotal: {totals.total}</p>
 			<button onClick={() => handleCheckout()}>Checkout</button>
 		</Layout>
