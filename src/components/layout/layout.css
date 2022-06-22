@@ -139,6 +139,12 @@ body {
 	margin-right: 10px;
 }
 
+.nav .cart {
+	margin: 0;
+	display: flex;
+
+}	
+
 a {
     color: inherit;
     text-decoration: none;

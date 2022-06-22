@@ -131,8 +131,6 @@ function useAddItemToCart() {
   } = useContext(StoreContext)
 
   async function addItemToCart(variantId, quantity) {
-		console.log(variantId)
-		console.log(quantity)
     if (variantId === "" || !quantity) {
       console.error("Both a size and quantity are required.")
       return
@@ -143,7 +141,10 @@ function useAddItemToCart() {
     })
 
     const checkoutId = checkout.id
-    const lineItemsToAdd = [{ variantId, quantity: parseInt(quantity, 10) }]
+    const lineItemsToAdd = [{
+			variantId,
+			quantity: parseInt(quantity, 10),
+		}]
 
     const newCheckout = await client.checkout.addLineItems(
       checkoutId,

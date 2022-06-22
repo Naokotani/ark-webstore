@@ -1,5 +1,7 @@
-import React from "react"
-import {
+import React, { useState } from "react"
+import { navigate } from "gatsby";
+import StoreContext, {
+	StoreContextProvider,
 	useAddItemToCart,
 	useCartItems,
 	useCartCount,
@@ -12,44 +14,62 @@ import Layout from "../components/Layout"
 
 
 const ProductTemplate = ({ pageContext }) => {
+
 	const { product } = pageContext
 
 	const variantId = product.variants[0].shopifyId
 
 	const addItemToCart = useAddItemToCart();
-	const cartItems = useCartItems();
-	const cartCount = useCartCount();
-	const checkout = useCheckout();
 
 	const handleAddItem = () => {
-		addItemToCart(variantId, 1)
+		addItemToCart(variantId, quantity)
+		navigate("/products")
 	}
 
-	const handleCheckCart = () => {
-		console.log(cartCount)
+	const handleBuy = () => {
+		addItemToCart(variantId, quantity)
+		navigate("/checkout")
 	}
 
-	const handleCheckout = () => {
-		checkout()
+
+	const handleChange = e => {
+		setQuantity(e.target.value)
 	}
+
+	const [quantity, setQuantity] = useState(1);
 
 	return (
 		<Layout>
 			<h1>{product.title}</h1>
 			<div>{product.description}</div>
+			<form>
+				<label>
+					Quantity:
+					<select
+						name="quanitity"
+						value={quantity}
+						onChange={e => handleChange(e)}
+					>
+						<option value={1}>One</option>
+						<option value={2}>Two</option>
+						<option value={3}>Three</option>
+						<option value={4}>Four</option>
+						<option value={5}>Five</option>
+					</select>
+				</label>
+			</form>
+			<button
+				onClick={() => handleBuy()}>
+				Buy
+			</button>
 			<button
 				onClick={() => handleAddItem()}>
-				buy
+				Add to Cart
 			</button>
-			<button onClick={() => handleCheckCart()}>items</button>
-			<button onClick={() => handleCheckout()}>Checkout</button>
-		</Layout>
+		</Layout >
 	)
 }
 
 export default ProductTemplate
-					// <button
-					// 	className=""
-					// 	onClick={() => }>BUY</button>
 
 

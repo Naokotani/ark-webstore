@@ -2,13 +2,25 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import StoreContext, {
+	useCartTotals,
+}
+	from "../context/StoreContext"
 import './products.css'
 
 const ProductsPage = ({ data }) => {
+	const total = useCartTotals();
 
 	return (
 		<Layout>
-			<h3>The Ark Store</h3>
+			<h3 className="flex">
+				<span>The Ark Store</span>
+				{total.total !== "$0.00" &&
+					<span>
+						subtotal: {total.total}
+					</span>
+				}
+			</h3>
 			<hr />
 			<ul className="products--layout">
 				{data.allShopifyProduct.edges.map(({ node }) => {

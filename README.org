@@ -1,5 +1,5 @@
-:PROPERTIES:
-:ID:       920edd04-f411-4bea-8370-f179750071a7
+:PROPERTIE:
+:ID: 920edd04-f411-4bea-8370-f179750071a7
 :END:
 #+title: L'arche Store
 #+category: LarcheStore
@@ -17,8 +17,12 @@ on it should take the users to a page dedicated to that items speicifcally where
 - [[https://github.com/chrisandrewca/shopify-nextjs][Example simple nextjs app]]
 
 * Tasks
-** ACTIVE  Add a text position toggle to carousel schema in sanity.
+** TODO switch back to datetime in post schema
+Events have dates and times and it will sure be helpful down the road. I need to figure out how to correctly format it.
+** ACTIVE Create News and Events template pages
+Create template for News and Events with pagination
 ** ACTIVE create page template for each person
+Event component started.
 ** PLAN Create news and events compontent
 ** PLAN Helmet for SEO 
 - State "DONE"       from "PLAN"       [2022-02-05 Sat 02:53]
@@ -30,7 +34,6 @@ on it should take the users to a page dedicated to that items speicifcally where
 - State "DONE"       from "PLAN"       [2022-01-22 Sat 04:49]
 * Dates
 * Cancelled
-
 * Sanity
 ** Sanity page definition
 *** Title

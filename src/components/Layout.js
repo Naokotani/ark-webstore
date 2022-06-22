@@ -5,7 +5,7 @@ import { useCartCount } from "../context/StoreContext"
 import "./layout/layout.css";
 import "./layout/normalize.css";
 
-export default function Layout({ children, checkout }) {
+export default function Layout({ children }) {
 
 	const data = useStaticQuery(graphql`
     query {
@@ -36,7 +36,6 @@ export default function Layout({ children, checkout }) {
 
 
 	const cartCount = useCartCount();
-	console.log(cartCount)
 
 	// // Remove the home page link with the slug "l-arche-cape-breton"
 	const links = data.allSanityPage.edges.filter(
@@ -61,6 +60,7 @@ export default function Layout({ children, checkout }) {
 						</Link>
 					))}
 					<Link className="store" to="/products">Store</Link>
+					<Link className="cart" to="/checkout">
 					{cartCount === 0 &&
 						<StaticImage
 							src="../images/cart-shopping-solid.svg"
@@ -73,6 +73,7 @@ export default function Layout({ children, checkout }) {
 							widtth="22.5"
 							height="22.5" />
 					}
+					</Link>
 				</nav>
 			</header>
 			<main className="layout">{children}</main>
