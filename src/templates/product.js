@@ -1,16 +1,11 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby";
-import StoreContext, {
-	StoreContextProvider,
+import Layout from "../components/Layout"
+import Figure from "../components/Figure"
+import {
 	useAddItemToCart,
-	useCartItems,
-	useCartCount,
-	useCheckout
 }
 	from "../context/StoreContext"
-
-import Layout from "../components/Layout"
-
 
 
 const ProductTemplate = ({ pageContext }) => {
@@ -48,13 +43,17 @@ const ProductTemplate = ({ pageContext }) => {
 					<select
 						name="quanitity"
 						value={quantity}
-						onChange={e => handleChange(e)}
-					>
-						<option value={1}>One</option>
-						<option value={2}>Two</option>
-						<option value={3}>Three</option>
-						<option value={4}>Four</option>
-						<option value={5}>Five</option>
+						onChange={e => handleChange(e)}>
+						<option value={1}>1</option>
+						<option value={2}>2</option>
+						<option value={3}>3</option>
+						<option value={4}>4</option>
+						<option value={5}>5</option>
+						<option value={6}>6</option>
+						<option value={7}>7</option>
+						<option value={8}>8</option>
+						<option value={9}>9</option>
+						<option value={10}>10</option>
 					</select>
 				</label>
 			</form>

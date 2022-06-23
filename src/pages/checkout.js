@@ -4,7 +4,6 @@ import {
 	useCheckout,
 	useCartTotals,
 	useRemoveItemFromCart,
-	useAddItemToCart,
 	useUpdateItem,
 }
 	from "../context/StoreContext";
@@ -16,16 +15,10 @@ const Checkout = () => {
 	const cartItems = useCartItems();
 	const totals = useCartTotals();
 	const removeItem = useRemoveItemFromCart();
-	const addItem = useAddItemToCart();
 	const updateItem = useUpdateItem();
 
-
 	const [quantity, setQuantity] = useState({});
-
-
-	const handleCheckout = () => {
-		checkout();
-	}
+	const [cartEmpty, setCartEmpty] = useState(true);
 
 	const handleUpdate = (checkoutId, value) => {
 		setQuantity({ ...quantity, [checkoutId]: value })
@@ -35,26 +28,21 @@ const Checkout = () => {
 		updateItem(checkoutId, lineItemsToUpdate)
 	}
 
-	const handleRemove = (itemId) => {
-		removeItem(itemId)
-	}
-
 	useEffect(() => {
 		let updateQuantity = {}
 		cartItems.forEach(item => {
 			updateQuantity[item.id] = item.quantity
 		})
 		setQuantity(updateQuantity)
-		console.log('useEffect')
+		cartItems[0] ? setCartEmpty(false) : setCartEmpty(true)
 	}, [cartItems])
 
 	return (
 		<Layout>
 			<h1 className="underline">Your Cart</h1>
-			{!cartItems &&
-				<h1>Your Cart is Empty</h1>
-			}
-			{cartItems &&
+			{!cartItems[0] ?
+				<h3>Your Cart is Empty</h3>
+				:
 				<table>
 					<thead>
 						<tr>
@@ -63,41 +51,48 @@ const Checkout = () => {
 							<th className="border">price</th>
 						</tr>
 					</thead>
-					{cartItems.map(item => {
-						console.log(quantity)
-						return (
-							<tbody>
+					<tbody>
+						{cartItems.map(item => {
+							return (
 								<tr>
 									<td className="border">{item.title}</td>
-									<td className="number border">{item.quantity}</td>
-									<td className="number border">{item.variant.priceV2.amount}</td>
-									<td key={item.id}>
-										<button
-											onClick={() => handleRemove(item.id)}>
-											Remove</button>
-									</td>
-									{ quantity &&
 									<td>
 										<select
 											value={quantity[item.id]}
 											name="quantity"
 											onChange={(e) => handleUpdate(item.id, e.target.value)}>
-											<option value={1}>one</option>
-											<option value={2}>two</option>
-											<option value={3}>three</option>
-											<option value={4}>four</option>
-											<option value={5}>five</option>
+											<option value={1}>1</option>
+											<option value={2}>2</option>
+											<option value={3}>3</option>
+											<option value={4}>4</option>
+											<option value={5}>5</option>
+											<option value={6}>6</option>
+											<option value={7}>7</option>
+											<option value={8}>8</option>
+											<option value={9}>9</option>
+											<option value={10}>10</option>
 										</select>
 									</td>
-									}
+									<td className="number border">{item.variant.priceV2.amount}</td>
+									<td key={item.id}>
+										<button
+											onClick={() => removeItem(item.id)}>
+											Remove</button>
+									</td>
 								</tr>
-							</tbody>
-						)
-					})}
+							)
+						})}
+						<tr>
+							<td colSpan="3" className="border number">
+								Subtotal: {totals.total}
+							</td>
+						</tr>
+					</tbody>
 				</table>
 			}
-			<p>Subtotal: {totals.total}</p>
-			<button onClick={() => handleCheckout()}>Checkout</button>
+			<tr>
+			</tr>
+			<button disabled={cartEmpty} onClick={() => checkout()}>Checkout</button>
 		</Layout>
 	)
 }
