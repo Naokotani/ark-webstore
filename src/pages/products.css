@@ -36,3 +36,25 @@
 .products--card:hover {
 	box-shadow: var(--cardShadow);
 }
+
+.product button {
+	margin-top: 1rem;
+}
+
+.product button+button {
+	margin-left: 10px;
+}
+
+.product .header-price {
+	font-size: var(--h3);
+}
+
+.product h1 {
+	align-items: flex-end;
+}
+
+
+table + .checkout-button {
+	margin-top: 1rem;
+}
+

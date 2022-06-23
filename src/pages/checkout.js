@@ -39,7 +39,7 @@ const Checkout = () => {
 
 	return (
 		<Layout>
-			<h1 className="underline">Your Cart</h1>
+			<h1 className="">Your Cart</h1>
 			{!cartItems[0] ?
 				<h3>Your Cart is Empty</h3>
 				:
@@ -56,7 +56,7 @@ const Checkout = () => {
 							return (
 								<tr>
 									<td className="border">{item.title}</td>
-									<td>
+									<td className="select">
 										<select
 											value={quantity[item.id]}
 											name="quantity"
@@ -90,9 +90,11 @@ const Checkout = () => {
 					</tbody>
 				</table>
 			}
-			<tr>
-			</tr>
-			<button disabled={cartEmpty} onClick={() => checkout()}>Checkout</button>
+			<button
+				disabled={cartEmpty}
+				onClick={() => checkout()}
+				className="checkout-button">
+			Checkout</button>
 		</Layout>
 	)
 }

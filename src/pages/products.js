@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import StoreContext, {
+import {
 	useCartTotals,
 }
 	from "../context/StoreContext"

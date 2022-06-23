@@ -10,6 +10,9 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             title
+						featuredImage{
+							gatsbyImageData
+						}
             shopifyId
             handle
             description
