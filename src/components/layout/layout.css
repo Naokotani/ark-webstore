@@ -405,7 +405,7 @@ button.plain:hover {
 }
 
 .underline {
-    border-bottom: solid 1px var(--textColor);
+    border-bottom: solid 1px var(--orange);
 }
 
 .pointer {
@@ -430,4 +430,8 @@ td, th {
 
 table .select {
 	border-bottom: var(--line);
+}
+
+li {
+	list-style: initial;
 }

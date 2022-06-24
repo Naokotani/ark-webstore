@@ -10,7 +10,7 @@
   justify-content: center;	
 }
 
-.post h2 {
+.post h2, h3 {
 	margin-bottom: 0;
 }
 
@@ -30,22 +30,19 @@
 	margin: 0;
 }
 
-.post button {
-	margin: 2px 28px 2px 26px;
-}
 
-.post button:hover {
-	margin: 0 26px 0 26px;
-}
-
-.post > div {
+.post header {
 	margin-bottom: 3rem;
 	align-items: flex-end;
 }
 
-.post img {
+.post .card-image img {
 	max-height: 200px;
 	margin: 0;
+}
+
+.post .house-image {
+	align-items: center;
 }
 
 .post .grid {

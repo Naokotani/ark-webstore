@@ -72,10 +72,10 @@ add a random person that has not been added to the people list. */
 
 	return (
 		<div className="post">
-			<div className="flex underline">
+			<header className="flex underline">
 				<h2>{role[0].node.title}</h2>
 				<Link to="/people">See All Community Members</Link>
-			</div>
+			</header>
 			<div className="products--layout">
 				{people.map((person) => (
 					<Link to={`/profile/${person.node.slug.current}`}>

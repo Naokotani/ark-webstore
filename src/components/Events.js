@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/serializers';
 import Figure from '../components/Figure'
+import { StaticImage } from "gatsby-plugin-image";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import "./post.css"
 
-const Events = ({ sort, number }) => {
+const Events = () => {
 
 	const data = useStaticQuery(graphql`
 query {
@@ -33,70 +34,52 @@ query {
 }
 `)
 
-	const [posts, setPosts] = useState([])
-	const [postNum, setPostNum] = useState(number)
+	const posts = data.allSanityPost.edges.slice(0, 4);
+	const [postSlug, setPostSlug] = useState(data.allSanityPost.edges[0].node.slug.current)
 
 	// If here are enough event posts then slice the array of posts up
 	// to that number, or if it is less, then diplay all posts. 
 
-	const handleNext = () => {
-		setPosts([
-			...posts.slice(postNum - 1),
-			...posts.slice(0, postNum - 1)
-		])
+
+
+	const handleMouseOver = (post) => {
+		console.log(post.node.title)
+		setPostSlug(post.node.slug.current)
 	}
 
-	const handlePrev = () => {
-		setPosts([
-			...posts.slice(1),
-			...posts.slice(0, 1)
-		])
-	}
-
-	useEffect(() => {
-		if (data.allSanityPost.edges.length > postNum) {
-			setPosts(data.allSanityPost.edges.slice(0, postNum));
-		} else {
-			setPosts(data.allSanityPost.edges);
-		}
-	}, [postNum])
 
 	// Create an h3 for each event post title.
 	return (
-		<div className="post">
-			<div className="flex underline">
+		<div className="post" >
+			<header className="flex underline">
 				<h2>Upcoming News and Events</h2>
 				<Link to="/posts">See All News and Events</Link>
-			</div>
+			</header>
 			<ul className="">
-				<button
-					className=""
-					onClick={() => handleNext()}>&#8592;</button>
-				<button
-					onClick={() => handlePrev()}>&#8594;</button>
-				{posts[0] &&
-					<Link to={`/post/${posts[0].node.slug.current}`}>
-						<div className="post--card card grid">
-							{posts[0].node.mainImage &&
-								<aside className="flex">
-									<Figure id={posts[0].node.mainImage.asset._id} />
+				{posts.map((post) => (
+					<Link to={`/post/${post.node.slug.current}`}>
+						<div className="post--card card grid"
+							onMouseOver={() => handleMouseOver(post)}>
+
+							{postSlug === post.node.slug.current &&
+								<aside className="flex card-image">
+									{post.node.mainImage ?
+									<Figure id={post.node.mainImage.asset._id} />
+									 :
+									<StaticImage src="../images/lcblogohd.png" alt="lol" />
+									}
 								</aside>
 							}
 							<article className="">
-								<h3>{posts[0].node.title}</h3>
-								<p>{posts[0].node.date}</p>
-								<BlockContent
-									blocks={posts[0].node._rawBody}
-									serializers={serializers} />
-							</article>
-						</div>
-					</Link>
-				}
-				{posts.slice(1).map((post) => (
-					<Link to={`/post/${post.node.slug.current}`}>
-						<div className="post--card card">
-							<article className="">
-								<h5>{post.node.title}</h5>
+								<h3>{post.node.title}</h3>
+								{postSlug === post.node.slug.current &&
+									<div>
+										<p>{post.node.date}</p>
+										<BlockContent
+											blocks={post.node._rawBody}
+											serializers={serializers} />
+									</div>
+								}
 							</article>
 						</div>
 					</Link>
