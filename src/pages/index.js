@@ -39,6 +39,7 @@ const HomePage = ({ data }) => {
 				interval={5000}
 				showStatus={false}
 				infiniteLoop={true}
+				showThumbs={false}
 				className="carousel"
 			>
 				{carousel.edges.map(({ node }) => (
