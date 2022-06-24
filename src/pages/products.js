@@ -13,15 +13,16 @@ const ProductsPage = ({ data }) => {
 
 	return (
 		<Layout>
-			<h3 className="flex">
-				<span>The Ark Store</span>
-				{total.total !== "$0.00" &&
-					<span>
-						subtotal: {total.total}
-					</span>
-				}
-			</h3>
-			<hr />
+			<header className="product">
+				<h1 className="flex">
+					<span>The Ark Store</span>
+					{total.total !== "$0.00" &&
+						<span className="header-price">
+							subtotal: {total.total}
+						</span>
+					}
+				</h1>
+			</header>
 			<ul className="products--layout">
 				{data.allShopifyProduct.edges.map(({ node }) => {
 					const image = getImage(node.featuredImage.gatsbyImageData)

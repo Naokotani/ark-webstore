@@ -33,7 +33,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-	console.log(shop)
 	// Iterate over all products and create a new page using a template
 	// The product "handle" is generated automatically by Shopify
 	shop.data.allShopifyProduct.edges.forEach(({ node }) => {
