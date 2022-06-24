@@ -67,7 +67,6 @@ query {
     }
   }
 }
-
  `)
 
 	if (personQuery.errors) {
@@ -90,6 +89,53 @@ query {
 			},
 		})
 	})
+
+	//Create pages for personal profiles.
+	const houseQuery = await graphql(`
+query {
+  allSanityHouse {
+    edges {
+      node {
+        title
+				address
+        mainImage {
+          asset {
+            _id
+            gatsbyImageData
+          }
+        }
+        _rawBody
+				slug {
+					current
+				}
+      }
+    }
+  }
+}
+
+ `)
+
+	if (houseQuery.errors) {
+		throw houseQuery.errors
+	}
+
+	const houses = houseQuery.data.allSanityHouse.edges || []
+	houses.forEach((edge) => {
+		const path = `/house/${edge.node.slug.current}`
+
+		createPage({
+			path,
+			component: require.resolve('./src/templates/house.js'),
+			context: {
+				address: edge.node.address,
+				name: edge.node.title,
+				image: edge.node.mainImage,
+				slug: edge.node.slug.current,
+				body: edge.node._rawBody,
+			},
+		})
+	})
+
 	//Create generic pages
 	const pageQuery = await graphql(`
 query {
