@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/serializers';
 import Figure from '../components/Figure'
-import { useStaticQuery, graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
+import { Link, useStaticQuery, graphql } from "gatsby";
+import "./post.css"
 
-const News = ({ sort, number }) => {
-	
+const News = (props) => {
+
+	console.log(props)
 	const data = useStaticQuery(graphql`
 query {
-  allSanityPost(filter: {type: {eq: "News"}}, limit: 10) {
+	allSanityPost(sort: {order: DESC, fields: _createdAt}, limit: 10) {
     edges {
       node {
         title
@@ -22,6 +25,7 @@ query {
           }
         }
         _rawBody
+				date(formatString: "dddd MMMM Do, YYYY hh:mma")
         author {
           name
         }
@@ -30,38 +34,54 @@ query {
   }
 }
 `)
+	
 
-	let posts;
+	const posts = data.allSanityPost.edges.slice(0, 4);
+	const [postSlug, setPostSlug] = useState(data.allSanityPost.edges[0].node.slug.current)
 
-	if (data.allSanityPost.edges.length > number) {
-		posts = data.allSanityPost.edges.slice(0, number);
-	} else {
-		posts = data.allSanityPost.edges
+	const handleMouseOver = (post) => {
+		console.log(post.node.title)
+		setPostSlug(post.node.slug.current)
 	}
 
-
 	return (
-		<div className="">
-			<ul className="post--layout">
-			{posts.map((post) => (
-				<div className="post--card card grid">
-					<article className="aside-left">
-						<h3>{post.node.title}</h3>
-						<p>{post.node.date}</p>
-						<BlockContent
-							blocks={post.node._rawBody}
-							serializers={serializers} />
-					</article>
-					<aside className="aside-right">
-						{post.node.mainImage &&
-						 <Figure id={post.node.mainImage.asset._id} />
-						}
-					</aside>
-				</div>
-			))}
+		<div className="post" >
+			<header className="flex underline">
+				<h2>Upcoming News and News</h2>
+				<Link to="/posts">See All News and News</Link>
+			</header>
+			<ul className="">
+				{posts.map((post) => (
+					<Link to={`/post/${post.node.slug.current}`}>
+						<div className="post--card card grid"
+							onMouseOver={() => handleMouseOver(post)}>
+
+							{postSlug === post.node.slug.current &&
+								<aside className="flex card-image">
+									{post.node.mainImage ?
+									<Figure id={post.node.mainImage.asset._id} />
+									 :
+									<StaticImage src="../images/lcblogohd.png" alt="lol" />
+									}
+								</aside>
+							}
+							<article className="">
+								<h3>{post.node.title}</h3>
+								{postSlug === post.node.slug.current &&
+									<div>
+										<BlockContent
+											blocks={post.node._rawBody}
+											serializers={serializers} />
+									</div>
+								}
+							</article>
+						</div>
+					</Link>
+				))}
 			</ul>
-		</div>
+		</div >
 	)
+
 }
 
 export default News;

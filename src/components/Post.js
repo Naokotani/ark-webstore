@@ -32,10 +32,10 @@ query {
 						sort={post[0].node.sort}
 						number={post[0].node.number}
 					/> :
-				<Events
+					<Events
 						sort={post[0].node.sort}
 						number={post[0].node.number}
-				/>
+					/>
 			}
 		</div>
 	)

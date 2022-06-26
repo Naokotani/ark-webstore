@@ -36,6 +36,7 @@ query{
 			person = e.node;
 		}
 	});
+
 	return (
 		<article className="flex">
 			<section>

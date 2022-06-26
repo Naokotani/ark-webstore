@@ -6,11 +6,12 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import "./post.css"
 
-const Events = () => {
+const Events = (props) => {
 
+	console.log(props)
 	const data = useStaticQuery(graphql`
 query {
-			allSanityPost(sort: {order: DESC, fields: _createdAt}, limit: 10) {
+	allSanityPost(sort: {order: DESC, fields: _createdAt}, limit: 10) {
     edges {
       node {
         title
@@ -33,22 +34,16 @@ query {
   }
 }
 `)
+	
 
 	const posts = data.allSanityPost.edges.slice(0, 4);
 	const [postSlug, setPostSlug] = useState(data.allSanityPost.edges[0].node.slug.current)
-
-	// If here are enough event posts then slice the array of posts up
-	// to that number, or if it is less, then diplay all posts. 
-
-
 
 	const handleMouseOver = (post) => {
 		console.log(post.node.title)
 		setPostSlug(post.node.slug.current)
 	}
 
-
-	// Create an h3 for each event post title.
 	return (
 		<div className="post" >
 			<header className="flex underline">
