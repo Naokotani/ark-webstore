@@ -41,53 +41,54 @@ const Role = (props) => {
     }
   `);
 
-	function findRoleComp() {
+	function findComponent() {
 		const role = data.allSanityRoleComponent.edges.filter(
 			(role) => role.node._id === props.node._ref
 		);
-		return role[0].number;
+
+		return role[0].node;
 	}
 
-	function randomPersonArry(role, p) {
-		let people = [];
-		while (people.length < role[0].node.number) {
-			const item = p[Math.floor(Math.random() * p.length)];
+	function randomHouseArr(people, arr, role) {
+		let i = 0
+
+		while (people.length < role.number) {
+			if (i === 20) {
+				console.error("error generating people array")
+				break;
+			}
+			const item = arr[Math.floor(Math.random() * arr.length)];
 			if (!people.includes(item)) {
 				people.push(item);
 			}
+			i++;
 		}
-		return people
-	}
-
-	function findSpecificPerosn(role, p) {
-		let people = [];
-		const names = role.specific.map(e => { return e.name })
-		people = p.filter(person => names.some(name => name === person.node.name))
 		return people;
 	}
 
-	function createPeopleArr(role) {
-		let p = data.allSanityPerson.edges;
-		let people;
+	function createPersonArr(role) {
+		let people = [];
+		let arr = data.allSanityPerson.edges;
 
-		if (role.number && p.length >= role.number) {
-			people = randomPersonArry(role, p)
+		if (role.number && arr.length >= role.number) {
+			people = randomHouseArr(people, arr, role)
 		} else if (people.length < role.number) {
 			console.error("Not enough Items in array.");
 			//Otherwise finde the specific person to display
 		} else {
-			people = findSpecificPerosn(role, p)
+			const names = role.specific.map(e => { return e.name })
+			people = arr.filter(person => names.some(name => name === person.node.name))
 		}
 		return people;
 	}
 
-	const role = findRoleComp()
-	const people = createPeopleArr(role)
+	const role = findComponent()
+	const people = createPersonArr(role)
 
 	return (
 		<div className="post">
 			<header className="flex underline">
-				<h2>{role[0].node.title}</h2>
+				<h2>{role.title}</h2>
 				<Link to="/people">See All Community Members</Link>
 			</header>
 			<div className="products--layout">

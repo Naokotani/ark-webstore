@@ -53,11 +53,18 @@ const House = (props) => {
 	}
 
 	function randomHouseArray(number, houseArr, houses) {
+		let i = 0
+
 		while (houses.length < number) {
+			if (i === 20) {
+				console.error("error generating houses array")
+				break;
+			}
 			const item = houseArr[Math.floor(Math.random() * houseArr.length)];
 			if (!houses.includes(item)) {
 				houses.push(item);
 			}
+			i++;
 		}
 		return houses;
 	}
