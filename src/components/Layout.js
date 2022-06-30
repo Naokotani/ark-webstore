@@ -6,7 +6,7 @@ import MenuItem from './MenuItem'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import "./layout/layout.css";
 import "./layout/normalize.css";
-import "./layour/carousel.css";
+import "./layout/carousel.css";
 import "./layout/nav.css";
 import './layout/products.css'
 import "./layout/post.css"
