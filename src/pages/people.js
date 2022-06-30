@@ -8,7 +8,7 @@ const People = ({ data }) => {
 		<Layout>
 			<ul className="post--layout">
 				{data.allSanityPerson.edges.map((person) => (
-					<li key={person.node.id}>
+					<section key={person.node.id}>
 						<Link to={`/profile/${person.node.slug.current}`}>
 							<div className="">
 								<div className="">
@@ -22,7 +22,7 @@ const People = ({ data }) => {
 								</div>
 							</div>
 						</Link>
-					</li>
+					</section>
 				))}
 			</ul>
 		</Layout>

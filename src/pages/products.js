@@ -26,21 +26,21 @@ const ProductsPage = ({ data }) => {
 				{data.allShopifyProduct.edges.map(({ node }) => {
 					const image = getImage(node.featuredImage.gatsbyImageData)
 					return (
-						<Link key={node.shopifyId} to={`/products/${node.handle}`}>
-							<li className="products--card card">
-								<GatsbyImage image={image} alt="" />
-								<header className="flex">
-									<h3 >
-										{node.title}
-									</h3>
-									<aside>
-										{node.priceRangeV2.minVariantPrice.amount}
-									</aside>
-								</header>
-								<section>
-								</section>
-							</li>
-						</Link>
+						<li>
+							<Link key={node.shopifyId} to={`/products/${node.handle}`}>
+								<article className="products--card card">
+									<GatsbyImage image={image} alt="" />
+									<header className="flex">
+										<h3 >
+											{node.title}
+										</h3>
+										<aside>
+											{node.priceRangeV2.minVariantPrice.amount}
+										</aside>
+									</header>
+								</article>
+							</Link>
+						</li>
 					)
 				})}
 			</ul>

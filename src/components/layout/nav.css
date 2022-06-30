@@ -16,9 +16,6 @@
 }
 
 .nav .main-nav {
-        display: flex;
-        align-items: center;
-        justify-content: center;
 }
 
 .nav .store {
@@ -60,6 +57,9 @@ header nav a + a {
 
 .menu-items {
   position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .menu-items ul a:hover {
@@ -67,7 +67,7 @@ header nav a + a {
 	border-bottom: none;
 }
 
-.menu-items a {
+.menu-items li {
   display: block;
   font-size: 1.3rem;
   color: inherit;

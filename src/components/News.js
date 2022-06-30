@@ -32,51 +32,41 @@ query {
   }
 }
 `)
-	
 
 	const posts = data.allSanityPost.edges.slice(0, 4);
-	const [postSlug, setPostSlug] = useState(data.allSanityPost.edges[0].node.slug.current)
-
-	const handleMouseOver = (post) => {
-		setPostSlug(post.node.slug.current)
-	}
 
 	return (
-		<li className="post" >
+		<div className="post" >
 			<header className="flex underline">
 				<h2>Upcoming News and News</h2>
 				<Link to="/posts">See All News and News</Link>
 			</header>
-			<ul className="">
+			<ul>
 				{posts.map((post) => (
-					<Link to={`/post/${post.node.slug.current}`}>
-						<li className="post--card card grid"
-							onMouseOver={() => handleMouseOver(post)}>
-
-							{postSlug === post.node.slug.current &&
-								<aside className="flex card-image">
-									{post.node.mainImage ?
-									<Figure id={post.node.mainImage.asset._id} />
-									 :
-									<StaticImage src="../images/lcblogohd.png" alt="lol" />
-									}
-								</aside>
-							}
-							<article className="">
-								<h3>{post.node.title}</h3>
-								{postSlug === post.node.slug.current &&
-									<li>
-										<BlockContent
-											blocks={post.node._rawBody}
-											serializers={serializers} />
-									</li>
+					<li>
+						<article className="post--card card grid">
+							<Link to={`/post/${post.node.slug.current}`}>
+								{post.node.mainImage ?
+									<figure className="flex card-image">
+										<Figure id={post.node.mainImage.asset._id} />
+									</figure>
+									:
+									<figure className="flex card-image">
+										<StaticImage src="../images/lcblogohd.png" alt="lol" />
+									</figure>
 								}
-							</article>
-						</li>
-					</Link>
+								<div>
+									<h3>{post.node.title}</h3>
+									<BlockContent
+										blocks={post.node._rawBody}
+										serializers={serializers} />
+								</div>
+							</Link>
+						</article>
+					</li>
 				))}
 			</ul>
-		</li >
+		</div >
 	)
 
 }

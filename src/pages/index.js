@@ -36,7 +36,7 @@ const HomePage = ({ data }) => {
 				infiniteLoop={true}
 				showThumbs={false}>
 				{carousel.edges.map(({ node }) => (
-					<li className="car" key={node.name}>
+					<section className="car" key={node.name}>
 						<Figure id={node.mainImage.asset._id} />
 						<Link to={`/${node.link._rawSlug.current}`}>
 							<section className={textPosition(node.textPosition)}>
@@ -44,7 +44,7 @@ const HomePage = ({ data }) => {
 								<p>{node.text}</p>
 							</section>
 						</Link>
-					</li>
+					</section>
 				))}
 			</Carousel>
 			<BlockContent blocks={page._rawBody} serializers={serializers} />

@@ -86,23 +86,26 @@ const Role = (props) => {
 	const people = createPersonArr(role)
 
 	return (
-		<li className="post">
+		<section className="post">
 			<header className="flex underline">
 				<h2>{role.title}</h2>
 				<Link to="/people">See All Community Members</Link>
 			</header>
-			<li className="products--layout">
+			<ul className="products--layout">
 				{people.map((person, i) => (
-					<Link to={`/profile/${person.node.slug.current}`} key={i}>
-						<section className="card products--card" key={person.node._id}>
-							<Figure id={person.node.mainImage.asset._id} />
-							<h3 className="h4">{person.node.name}</h3>
-							<h4 className="h5">{person.node.role}</h4>
-						</section>
-					</Link>
+					<li>
+						<Link to={`/profile/${person.node.slug.current}`} key={i}>
+							<article className="card products--card" key={person.node._id}>
+								<Figure id={person.node.mainImage.asset._id} />
+								<h3 className="h4">{person.node.name}</h3>
+								<h4 className="h5">{person.node.role}</h4>
+							</article>
+						</Link>
+					</li>
+
 				))}
-			</li>
-		</li>
+			</ul>
+		</section>
 	);
 };
 

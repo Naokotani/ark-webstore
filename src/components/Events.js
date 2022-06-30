@@ -36,40 +36,44 @@ query {
 	const posts = data.allSanityPost.edges.slice(0, 4);
 
 	return (
-		<li className="post" >
+		<section className="post" >
 			<header className="flex underline">
 				<h2>Upcoming News and Events</h2>
 				<Link to="/posts">See All News and Events</Link>
 			</header>
-			<ul className="">
+			<ul>
 				{posts.map((post, i) => (
-					<Link to={`/post/${post.node.slug.current}`} key={i}>
-						<li className="post--card card grid">
-							<aside className="flex card-image">
+					<li key={i}>
+						<Link to={`/post/${post.node.slug.current}`}>
+							<article className="post--card card grid">
 								{post.node.mainImage ?
-									<Figure id={post.node.mainImage.asset._id} />
+								 <figure
+									 className="flex card-image">
+									 <Figure
+										 id={post.node.mainImage.asset._id} />
+									</figure>
 									:
-									<StaticImage src="../images/lcblogohd.png" alt="lol" />
+								 <figure
+									 className="flex card-image">
+									 <StaticImage
+										 src="../images/lcblogohd.png"
+										 alt="L'Arche Logo" />
+									</figure>
 								}
-							</aside>
-							<article className="">
-								<h3>{post.node.title}</h3>
-								<li>
-									<p>{post.node.date}</p>
-									{post.node._rawBody &&
-										<BlockContent
-											blocks={post.node._rawBody}
-											serializers={serializers} />
-									}
-								</li>
+								<div>
+									<h3>{post.node.title}</h3>
+									<time>{post.node.date}</time>
+									<BlockContent
+										blocks={post.node._rawBody}
+										serializers={serializers} />
+								</div>
 							</article>
-						</li>
-					</Link>
+						</Link>
+					</li>
 				))}
 			</ul>
-		</li >
+		</section >
 	)
-
 }
 
 export default Events;

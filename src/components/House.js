@@ -102,7 +102,7 @@ const House = (props) => {
 	const houses = createHouseArray(comp);
 
 	return (
-		<li>
+		<section>
 			{houses.map((house, i) => {
 				const left = (i + 1) % 2
 				if (left) {
@@ -147,7 +147,7 @@ const House = (props) => {
 					)
 				}
 			})}
-		</li>
+		</section>
 	);
 };
 
