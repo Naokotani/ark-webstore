@@ -3,10 +3,8 @@ import Figure from "../components/Figure"
 import { graphql, Link } from "gatsby";
 import BlockContent from "@sanity/block-content-to-react";
 import serializers from "../components/serializers";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import Layout from "../components/Layout";
-import "./carousel.css";
 
 const HomePage = ({ data }) => {
 	const page = data.sanityPage;

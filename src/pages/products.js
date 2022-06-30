@@ -6,7 +6,6 @@ import {
 	useCartTotals,
 }
 	from "../context/StoreContext"
-import './products.css'
 
 const ProductsPage = ({ data }) => {
 	const total = useCartTotals();

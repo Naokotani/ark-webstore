@@ -5,7 +5,11 @@ import { StoreContextProvider, useCartCount } from "../context/StoreContext"
 import MenuItem from './MenuItem'
 import "./layout/layout.css";
 import "./layout/normalize.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "./carousel.css";
 import "./layout/nav.css";
+import './products.css'
+import "./post.css"
 
 export default function Layout({ children }) {
 

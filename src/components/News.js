@@ -4,7 +4,6 @@ import serializers from '../components/serializers';
 import Figure from '../components/Figure'
 import { StaticImage } from "gatsby-plugin-image";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import "./post.css"
 
 const News = (props) => {
 
