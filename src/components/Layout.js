@@ -3,13 +3,13 @@ import { StaticImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { StoreContextProvider, useCartCount } from "../context/StoreContext"
 import MenuItem from './MenuItem'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import "./layout/layout.css";
 import "./layout/normalize.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import "./carousel.css";
+import "./layour/carousel.css";
 import "./layout/nav.css";
-import './products.css'
-import "./post.css"
+import './layout/products.css'
+import "./layout/post.css"
 
 export default function Layout({ children }) {
 
