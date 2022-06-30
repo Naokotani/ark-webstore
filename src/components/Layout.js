@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { useCartCount } from "../context/StoreContext"
+import { StoreContextProvider, useCartCount } from "../context/StoreContext"
 import MenuItem from './MenuItem'
 import "./layout/layout.css";
 import "./layout/normalize.css";
@@ -46,44 +46,44 @@ export default function Layout({ children }) {
 	// in the main tag.
 
 	return (
-		<li>
-			<header className="nav">
-				<Link to="/">
-					<StaticImage src="../images/lcblogohd.png" alt="lol" />
-				</Link>
-				<nav className="main-nav menu-items">
-					{links.map((link, index) => (
-						<MenuItem slug={link.node.slug.current} link={link.node.link}key={index} />
-					))}
-					<Link className="store" to="/products">Store</Link>
-					<Link className="cart" to="/checkout">
-					{cartCount === 0 &&
-						<StaticImage
-							src="../images/cart-shopping-solid.svg"
-							width={22.5}
-							height={22.5}
-							alt="Shopping Cart"
-						/>
-					}
-					{cartCount > 0 &&
-						<StaticImage
-							src="../images/cart-plus-solid.svg"
-							widtth={22.5}
-							height={22.5}
-							alt="shopping Cart"
-						/>
-					}
+		<StoreContextProvider>
+				<header className="nav">
+					<Link to="/">
+						<StaticImage src="../images/lcblogohd.png" alt="lol" />
 					</Link>
-				</nav>
-			</header>
-			<main className="layout">{children}</main>
-			<footer>
-				<h3 className="fake-logo">Fake Logo</h3>
-				<nav>
-					<Link to="/">Home</Link>
-					<Link to="/products">Store</Link>
-				</nav>
-			</footer>
-		</li>
+					<nav className="main-nav menu-items">
+						{links.map((link, index) => (
+							<MenuItem slug={link.node.slug.current} link={link.node.link} key={index} />
+						))}
+						<Link className="store" to="/products">Store</Link>
+						<Link className="cart" to="/checkout">
+							{cartCount === 0 &&
+								<StaticImage
+									src="../images/cart-shopping-solid.svg"
+									width={22.5}
+									height={22.5}
+									alt="Shopping Cart"
+								/>
+							}
+							{cartCount > 0 &&
+								<StaticImage
+									src="../images/cart-plus-solid.svg"
+									widtth={22.5}
+									height={22.5}
+									alt="shopping Cart"
+								/>
+							}
+						</Link>
+					</nav>
+				</header>
+				<main className="layout">{children}</main>
+				<footer>
+					<h3 className="fake-logo">Fake Logo</h3>
+					<nav>
+						<Link to="/">Home</Link>
+						<Link to="/products">Store</Link>
+					</nav>
+				</footer>
+		</StoreContextProvider>
 	);
 }
