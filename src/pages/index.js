@@ -10,8 +10,6 @@ const HomePage = ({ data }) => {
 	const page = data.sanityPage;
 	const carousel = data.allSanityCarousel;
 
-	console.log(carousel)
-
 	const textPosition = (position) => {
 		if (position === 'Top Left') {
 			return 'carousel--top-left';
@@ -36,11 +34,9 @@ const HomePage = ({ data }) => {
 				interval={5000}
 				showStatus={false}
 				infiniteLoop={true}
-				showThumbs={false}
-				className="carousel"
-			>
+				showThumbs={false}>
 				{carousel.edges.map(({ node }) => (
-					<li className="carousel" key={node.name}>
+					<li className="car" key={node.name}>
 						<Figure id={node.mainImage.asset._id} />
 						<Link to={`/${node.link._rawSlug.current}`}>
 							<section className={textPosition(node.textPosition)}>
