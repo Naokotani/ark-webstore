@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/serializers';
 import Figure from '../components/Figure'
@@ -33,13 +33,7 @@ query {
 }
 `)
 
-
 	const posts = data.allSanityPost.edges.slice(0, 4);
-	const [postSlug, setPostSlug] = useState(data.allSanityPost.edges[0].node.slug.current)
-
-	const handleMouseOver = (post) => {
-		setPostSlug(post.node.slug.current)
-	}
 
 	return (
 		<li className="post" >
@@ -50,30 +44,24 @@ query {
 			<ul className="">
 				{posts.map((post, i) => (
 					<Link to={`/post/${post.node.slug.current}`} key={i}>
-						<li className="post--card card grid"
-							onMouseOver={() => handleMouseOver(post)}>
-
-							{postSlug === post.node.slug.current &&
-								<aside className="flex card-image">
-									{post.node.mainImage ?
-										<Figure id={post.node.mainImage.asset._id} />
-										:
-										<StaticImage src="../images/lcblogohd.png" alt="lol" />
-									}
-								</aside>
-							}
+						<li className="post--card card grid">
+							<aside className="flex card-image">
+								{post.node.mainImage ?
+									<Figure id={post.node.mainImage.asset._id} />
+									:
+									<StaticImage src="../images/lcblogohd.png" alt="lol" />
+								}
+							</aside>
 							<article className="">
 								<h3>{post.node.title}</h3>
-								{postSlug === post.node.slug.current &&
-									<li>
-										<p>{post.node.date}</p>
-										{post.node._rawBody &&
-											<BlockContent
-												blocks={post.node._rawBody}
-												serializers={serializers} />
-										}
-									</li>
-								}
+								<li>
+									<p>{post.node.date}</p>
+									{post.node._rawBody &&
+										<BlockContent
+											blocks={post.node._rawBody}
+											serializers={serializers} />
+									}
+								</li>
 							</article>
 						</li>
 					</Link>
