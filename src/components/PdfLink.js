@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const PdfLink = (props) => {
-	console.log(props)
 	const data = useStaticQuery(graphql`
 query {
   allSanityPdf {
@@ -20,7 +19,6 @@ query {
   }
 }
 `)
-	console.log(props)
 
 	let url;
 	data.allSanityPdf.edges.forEach(e => {

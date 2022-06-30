@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout'
 import House from '../components/House'
 
 const Houses = ({ data }) => {
-	console.log(data)
 	return (
 		<Layout>
 			<House page={true} />

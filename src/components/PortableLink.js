@@ -1,8 +1,6 @@
 import React from 'react';
-import {Link} from 'gatsby';
 
 const PortableLink = (props) => {
-	console.log(props)
 	return (
 		<span></span>
 	)

@@ -8,8 +8,6 @@ const Posts = ({ pageContext }) => {
 
 
 	const post = pageContext;
-	console.log(post)
-	console.log(post.body)
 	return (
 		<Layout>
 			<h1>

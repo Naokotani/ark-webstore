@@ -34,7 +34,6 @@ const ProductTemplate = ({ pageContext }) => {
 	const [quantity, setQuantity] = useState(1);
 	const image = getImage(product.featuredImage.gatsbyImageData)
 
-	console.log(product)
 	return (
 		<Layout>
 			<section className="product grid aside-left">

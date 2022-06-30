@@ -4,7 +4,6 @@ import Figure from './../components/Figure'
 import Layout from '../components/Layout'
 
 const People = ({ data }) => {
-	console.log(data)
 	return (
 		<Layout>
 			<ul className="post--layout">

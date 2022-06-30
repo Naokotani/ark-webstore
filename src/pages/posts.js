@@ -4,13 +4,11 @@ import Layout from '../components/Layout'
 import Figure from './../components/Figure'
 
 const Post = ({ data }) => {
-	console.log(data)
 	return (
 		<Layout>
 			<ul className="post--layout">
 				{data.allSanityPost.edges.map((post) => (
 					<li>
-						{console.log(post)}
 						<Link to={`/post/${post.node.slug.current}`}>
 							<section
 								className="card post--card">

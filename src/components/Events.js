@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/serializers';
 import Figure from '../components/Figure'
@@ -38,7 +38,6 @@ query {
 	const [postSlug, setPostSlug] = useState(data.allSanityPost.edges[0].node.slug.current)
 
 	const handleMouseOver = (post) => {
-		console.log(post.node.title)
 		setPostSlug(post.node.slug.current)
 	}
 
