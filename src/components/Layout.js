@@ -2,8 +2,10 @@ import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { useCartCount } from "../context/StoreContext"
+import MenuItem from './MenuItem'
 import "./layout/layout.css";
 import "./layout/normalize.css";
+import "./layout/nav.css";
 
 export default function Layout({ children }) {
 
@@ -31,9 +33,8 @@ export default function Layout({ children }) {
   	  }
   	}
   } 
-		}
+}
   `);
-
 
 	const cartCount = useCartCount();
 
@@ -45,33 +46,32 @@ export default function Layout({ children }) {
 	// in the main tag.
 
 	return (
-		<div>
+		<li>
 			<header className="nav">
 				<Link to="/">
 					<StaticImage src="../images/lcblogohd.png" alt="lol" />
 				</Link>
-				<nav className="main-nav">
-					{links.map((link) => (
-						<Link
-							key={link.node.slug.current}
-							to={`/${link.node.slug.current}`}
-						>
-							{link.node.link}
-						</Link>
+				<nav className="main-nav menu-items">
+					{links.map((link, index) => (
+						<MenuItem slug={link.node.slug.current} link={link.node.link}key={index} />
 					))}
 					<Link className="store" to="/products">Store</Link>
 					<Link className="cart" to="/checkout">
 					{cartCount === 0 &&
 						<StaticImage
 							src="../images/cart-shopping-solid.svg"
-							widtth="22.5"
-							height="22.5" />
+							width={22.5}
+							height={22.5}
+							alt="Shopping Cart"
+						/>
 					}
 					{cartCount > 0 &&
 						<StaticImage
 							src="../images/cart-plus-solid.svg"
-							widtth="22.5"
-							height="22.5" />
+							widtth={22.5}
+							height={22.5}
+							alt="shopping Cart"
+						/>
 					}
 					</Link>
 				</nav>
@@ -84,6 +84,6 @@ export default function Layout({ children }) {
 					<Link to="/products">Store</Link>
 				</nav>
 			</footer>
-		</div>
+		</li>
 	);
 }

@@ -1,0 +1,110 @@
+.nav {
+    --headerBackground: var(--navColor);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--headerBackground);
+    color: var(--white);
+    height: var(--headerHeight);
+    box-shadow: var(--level-2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--containerPadding);
+		z-index: 10;
+}
+
+.nav .main-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.nav .store {
+	margin-right: 10px;
+}
+
+.nav .cart {
+	margin: 0;
+	display: flex;
+
+}	
+
+header nav li {
+	list-style: none;
+}
+
+.nav-login__card {
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
+    margin-top: var(--headingHeight);
+    padding: 1rem;
+}
+
+header nav a {
+    color: var(--white);
+    text-decoration: none;
+		font-size: var(--h5);
+}
+
+header nav a:hover {
+    border-bottom: solid 1px var(--white);
+}
+
+header nav a + a {
+    margin-left: 10px;
+}
+
+
+.menu-items {
+  position: relative;
+}
+
+.menu-items ul a:hover {
+	background: var(--darkBlue);
+	border-bottom: none;
+}
+
+.menu-items a {
+  display: block;
+  font-size: 1.3rem;
+  color: inherit;
+}
+
+.dropdown a {
+	margin: 0 0.5rem;
+}	
+
+.menu-items .dropdown a {
+	font-size: 0.9rem;
+}
+
+.menu-items a,
+.menu-items button {
+  text-align: left;
+  padding: 0.7rem 1rem;
+}
+
+.dropdown {
+  position: absolute;
+	color: var(--white);
+  right: auto;
+  left: auto;
+  box-shadow: 0 10px 15px -3px rgba(46, 41, 51, 0.08),
+    0 4px 6px -2px rgba(71, 63, 79, 0.16);
+  font-size: 0.875rem;
+  z-index: 9999;
+  min-width: 11rem;
+  padding: 0.5rem 0;
+	margin-top: -0.3rem;
+  list-style: none;
+  background-color: var(--headerBackground);
+  border-radius: 4px;
+  display: none;
+}
+
+.dropdown.show {
+  display: block;
+}

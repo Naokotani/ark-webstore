@@ -114,56 +114,10 @@ body {
     color: var(--textColor);
 }
 
-.nav {
-    --headerBackground: var(--navColor);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: var(--headerBackground);
-    color: var(--white);
-    height: var(--headerHeight);
-    box-shadow: var(--level-2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 var(--containerPadding);
-		z-index: 10;
-}
-
-.nav .main-nav {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-}
-
-.nav .store {
-	margin-right: 10px;
-}
-
-.nav .cart {
-	margin: 0;
-	display: flex;
-
-}	
 
 a {
     color: inherit;
     text-decoration: none;
-}
-
-header nav a {
-    color: var(--white);
-    text-decoration: none;
-		font-size: var(--h5);
-}
-
-header nav a:hover {
-    border-bottom: solid 1px var(--white);
-}
-
-header nav a + a {
-    margin-left: 10px;
 }
 
 footer {
