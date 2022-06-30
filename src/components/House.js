@@ -102,12 +102,12 @@ const House = (props) => {
 	const houses = createHouseArray(comp);
 
 	return (
-		<div>
+		<li>
 			{houses.map((house, i) => {
 				const left = (i + 1) % 2
 				if (left) {
 					return (
-						<article className="house post grid aside-right">
+						<article className="house post grid aside-right" key={i}>
 							<section>
 								<header className="flex underline">
 									<h2>{house.node.title}</h2>
@@ -127,7 +127,7 @@ const House = (props) => {
 					)
 				} else {
 					return (
-						<article className="house post grid aside-left">
+						<article className="house post grid aside-left" key={i}>
 							<aside className="flex flex-around house-image">
 								<Figure id={house.node.mainImage.asset._id} alt="" />
 							</aside>
@@ -147,7 +147,7 @@ const House = (props) => {
 					)
 				}
 			})}
-		</div>
+		</li>
 	);
 };
 

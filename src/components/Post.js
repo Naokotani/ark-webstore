@@ -25,7 +25,7 @@ query {
 	);
 
 	return (
-		<div>
+		<li>
 			{
 				post[0].node.postType === 'News' ?
 					<News
@@ -37,7 +37,7 @@ query {
 						number={post[0].node.number}
 					/>
 			}
-		</div>
+		</li>
 	)
 }
 

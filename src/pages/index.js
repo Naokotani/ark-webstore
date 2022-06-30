@@ -16,17 +16,17 @@ const HomePage = ({ data }) => {
 	console.log(carousel)
 
 	const textPosition = (position) => {
-		if (position === 'Top Left'){
-			return 'carousel--top-left'; 
+		if (position === 'Top Left') {
+			return 'carousel--top-left';
 		}
 		if (position === 'Top Right') {
 			return 'carousel--top-right';
 		}
-			
+
 		if (position === 'Bottom Right') {
 			return 'carousel--bottom-right';
 		}
-			
+
 		if (position === 'Bottom Left') {
 			return 'carousel--bottom-left';
 		}
@@ -43,15 +43,15 @@ const HomePage = ({ data }) => {
 				className="carousel"
 			>
 				{carousel.edges.map(({ node }) => (
-					<div className="carousel">
+					<li className="carousel" key={node.name}>
 						<Figure id={node.mainImage.asset._id} />
 						<Link to={`/${node.link._rawSlug.current}`}>
-						<section className={textPosition(node.textPosition)}>
-							<h3>{node.name}</h3>
-							<p>{node.text}</p>
-						</section>
+							<section className={textPosition(node.textPosition)}>
+								<h3>{node.name}</h3>
+								<p>{node.text}</p>
+							</section>
 						</Link>
-					</div>
+					</li>
 				))}
 			</Carousel>
 			<BlockContent blocks={page._rawBody} serializers={serializers} />

@@ -8,7 +8,6 @@ import "./post.css"
 
 const Events = (props) => {
 
-	console.log(props)
 	const data = useStaticQuery(graphql`
 query {
 	allSanityPost(sort: {order: DESC, fields: _createdAt}, limit: 10) {
@@ -34,7 +33,7 @@ query {
   }
 }
 `)
-	
+
 
 	const posts = data.allSanityPost.edges.slice(0, 4);
 	const [postSlug, setPostSlug] = useState(data.allSanityPost.edges[0].node.slug.current)
@@ -45,42 +44,44 @@ query {
 	}
 
 	return (
-		<div className="post" >
+		<li className="post" >
 			<header className="flex underline">
 				<h2>Upcoming News and Events</h2>
 				<Link to="/posts">See All News and Events</Link>
 			</header>
 			<ul className="">
-				{posts.map((post) => (
-					<Link to={`/post/${post.node.slug.current}`}>
-						<div className="post--card card grid"
+				{posts.map((post, i) => (
+					<Link to={`/post/${post.node.slug.current}`} key={i}>
+						<li className="post--card card grid"
 							onMouseOver={() => handleMouseOver(post)}>
 
 							{postSlug === post.node.slug.current &&
 								<aside className="flex card-image">
 									{post.node.mainImage ?
-									<Figure id={post.node.mainImage.asset._id} />
-									 :
-									<StaticImage src="../images/lcblogohd.png" alt="lol" />
+										<Figure id={post.node.mainImage.asset._id} />
+										:
+										<StaticImage src="../images/lcblogohd.png" alt="lol" />
 									}
 								</aside>
 							}
 							<article className="">
 								<h3>{post.node.title}</h3>
 								{postSlug === post.node.slug.current &&
-									<div>
+									<li>
 										<p>{post.node.date}</p>
-										<BlockContent
-											blocks={post.node._rawBody}
-											serializers={serializers} />
-									</div>
+										{post.node._rawBody &&
+											<BlockContent
+												blocks={post.node._rawBody}
+												serializers={serializers} />
+										}
+									</li>
 								}
 							</article>
-						</div>
+						</li>
 					</Link>
 				))}
 			</ul>
-		</div >
+		</li >
 	)
 
 }

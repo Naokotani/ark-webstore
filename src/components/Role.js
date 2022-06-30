@@ -86,14 +86,14 @@ const Role = (props) => {
 	const people = createPersonArr(role)
 
 	return (
-		<div className="post">
+		<li className="post">
 			<header className="flex underline">
 				<h2>{role.title}</h2>
 				<Link to="/people">See All Community Members</Link>
 			</header>
-			<div className="products--layout">
-				{people.map((person) => (
-					<Link to={`/profile/${person.node.slug.current}`}>
+			<li className="products--layout">
+				{people.map((person, i) => (
+					<Link to={`/profile/${person.node.slug.current}`} key={i}>
 						<section className="card products--card" key={person.node._id}>
 							<Figure id={person.node.mainImage.asset._id} />
 							<h3 className="h4">{person.node.name}</h3>
@@ -101,8 +101,8 @@ const Role = (props) => {
 						</section>
 					</Link>
 				))}
-			</div>
-		</div>
+			</li>
+		</li>
 	);
 };
 

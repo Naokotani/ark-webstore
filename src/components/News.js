@@ -45,7 +45,7 @@ query {
 	}
 
 	return (
-		<div className="post" >
+		<li className="post" >
 			<header className="flex underline">
 				<h2>Upcoming News and News</h2>
 				<Link to="/posts">See All News and News</Link>
@@ -53,7 +53,7 @@ query {
 			<ul className="">
 				{posts.map((post) => (
 					<Link to={`/post/${post.node.slug.current}`}>
-						<div className="post--card card grid"
+						<li className="post--card card grid"
 							onMouseOver={() => handleMouseOver(post)}>
 
 							{postSlug === post.node.slug.current &&
@@ -68,18 +68,18 @@ query {
 							<article className="">
 								<h3>{post.node.title}</h3>
 								{postSlug === post.node.slug.current &&
-									<div>
+									<li>
 										<BlockContent
 											blocks={post.node._rawBody}
 											serializers={serializers} />
-									</div>
+									</li>
 								}
 							</article>
-						</div>
+						</li>
 					</Link>
 				))}
 			</ul>
-		</div >
+		</li >
 	)
 
 }

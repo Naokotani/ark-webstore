@@ -29,7 +29,7 @@ const ProductsPage = ({ data }) => {
 					return (
 						<Link key={node.shopifyId} to={`/products/${node.handle}`}>
 							<li className="products--card card">
-								<GatsbyImage image={image} alt={node.title} />
+								<GatsbyImage image={image} alt="" />
 								<header className="flex">
 									<h3 >
 										{node.title}
