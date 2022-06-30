@@ -14,6 +14,10 @@
 	margin-bottom: 0;
 }
 
+.post li {
+	list-style: none;
+}
+
 .post > .post--card {
 	height: 300px;
 }

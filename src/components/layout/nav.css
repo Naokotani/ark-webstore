@@ -62,6 +62,10 @@ header nav a + a {
 	justify-content: center;
 }
 
+.menu-items ul a {
+	border-radius: 4px;
+}
+
 .menu-items ul a:hover {
 	background: var(--darkBlue);
 	border-bottom: none;

@@ -5,7 +5,7 @@ import Figure from '../components/Figure'
 import { StaticImage } from "gatsby-plugin-image";
 import { Link, useStaticQuery, graphql } from "gatsby";
 
-const Events = (props) => {
+const Events = () => {
 
 	const data = useStaticQuery(graphql`
 query {
@@ -36,43 +36,41 @@ query {
 	const posts = data.allSanityPost.edges.slice(0, 4);
 
 	return (
-		<section className="post" >
+		<div className="post" >
 			<header className="flex underline">
 				<h2>Upcoming News and Events</h2>
 				<Link to="/posts">See All News and Events</Link>
 			</header>
-			<ul>
-				{posts.map((post, i) => (
-					<li key={i}>
-						<Link to={`/post/${post.node.slug.current}`}>
-							<article className="post--card card grid">
-								{post.node.mainImage ?
-								 <figure
-									 className="flex card-image">
-									 <Figure
-										 id={post.node.mainImage.asset._id} />
-									</figure>
-									:
-								 <figure
-									 className="flex card-image">
-									 <StaticImage
-										 src="../images/lcblogohd.png"
-										 alt="L'Arche Logo" />
-									</figure>
-								}
-								<div>
-									<h3>{post.node.title}</h3>
-									<time>{post.node.date}</time>
-									<BlockContent
-										blocks={post.node._rawBody}
-										serializers={serializers} />
-								</div>
-							</article>
-						</Link>
-					</li>
-				))}
-			</ul>
-		</section >
+			{posts.map((post, i) => (
+				<article key={i}>
+					<Link to={`/post/${post.node.slug.current}`}>
+						<div className="post--card card grid">
+							{post.node.mainImage ?
+								<figure
+									className="flex card-image">
+									<Figure
+										id={post.node.mainImage.asset._id} />
+								</figure>
+								:
+								<figure
+									className="flex card-image">
+									<StaticImage
+										src="../images/lcblogohd.png"
+										alt="L'Arche Logo" />
+								</figure>
+							}
+							<div>
+								<h3>{post.node.title}</h3>
+								<time>{post.node.date}</time>
+								<BlockContent
+									blocks={post.node._rawBody}
+									serializers={serializers} />
+							</div>
+						</div>
+					</Link>
+				</article>
+			))}
+		</div >
 	)
 }
 

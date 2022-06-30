@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import Figure from "./Figure";
 
@@ -82,30 +82,35 @@ const Role = (props) => {
 		return people;
 	}
 
-	const role = findComponent()
-	const people = createPersonArr(role)
+	const [roleArr, setRoleArr] = useState([]);
+	const [peopleArr, setPeopleArr] = useState([]);
+
+	useEffect(() => {
+		const role = findComponent();
+		const people = createPersonArr(role);
+
+		setRoleArr(role);
+		setPeopleArr(people);
+	}, [])
 
 	return (
-		<section className="post">
+		<div className="post">
 			<header className="flex underline">
-				<h2>{role.title}</h2>
+				<h2>{roleArr.title}</h2>
 				<Link to="/people">See All Community Members</Link>
 			</header>
-			<ul className="products--layout">
-				{people.map((person, i) => (
-					<li>
-						<Link to={`/profile/${person.node.slug.current}`} key={i}>
-							<article className="card products--card" key={person.node._id}>
-								<Figure id={person.node.mainImage.asset._id} />
-								<h3 className="h4">{person.node.name}</h3>
-								<h4 className="h5">{person.node.role}</h4>
-							</article>
-						</Link>
-					</li>
-
+			<div className="products--layout">
+				{peopleArr.map((person, i) => (
+					<Link to={`/profile/${person.node.slug.current}`} key={i}>
+						<article className="card products--card" key={person.node._id}>
+							<Figure id={person.node.mainImage.asset._id} />
+							<h3 className="h4">{person.node.name}</h3>
+							<h4 className="h5">{person.node.role}</h4>
+						</article>
+					</Link>
 				))}
-			</ul>
-		</section>
+			</div>
+		</div>
 	);
 };
 
