@@ -10,8 +10,9 @@
   justify-content: center;	
 }
 
-.post h2, h3 {
+.post h1, h2, h3 {
 	margin-bottom: 0;
+	border-bottom: none;
 }
 
 .post > .post--card {

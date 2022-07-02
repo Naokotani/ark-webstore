@@ -31,7 +31,7 @@ header nav a {
 }
 
 header nav a:hover {
-    border-bottom: solid 1px var(--white);
+    border-bottom: solid 1px var(--navTextColor);
 }
 
 ul.menu-items {

@@ -1,56 +1,14 @@
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout'
-import Figure from './../components/Figure'
+import Event from '../components/Events'
 
-const Post = ({ data }) => {
+const Post = () => {
 	return (
 		<Layout>
-			<ul className="post--layout">
-				{data.allSanityPost.edges.map((post) => (
-					<li>
-						<Link to={`/post/${post.node.slug.current}`}>
-							<section
-								className="card post--card">
-								{post.node.mainImage &&
-									<Figure id={post.node.mainImage.asset._id} />
-								}
-								<h3 className="h4">{post.node.title}</h3>
-							</section>
-						</Link>
-					</li>
-				))}
-			</ul>
+			<Event all={true} page={true} />
 		</Layout>
 	);
 };
-
-export const query = graphql`
-query {
-  allSanityPost(sort: {order: DESC, fields: _createdAt}) {
-    edges {
-      node {
-				id
-        title
-        slug {
-          current
-        }
-        publishedAt
-        mainImage {
-          asset {
-            _id
-          }
-        }
-        _rawBody
-				date(formatString: "dddd MMMM Do, YYYY hh:mma")
-        author {
-          name
-        }
-      }
-    }
-  }
-}
-`
-
 
 export default Post;

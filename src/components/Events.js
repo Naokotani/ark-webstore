@@ -2,10 +2,10 @@ import React from 'react'
 import BlockContent from '@sanity/block-content-to-react';
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import Figure from '../components/Figure';
-import serializers from '../components/serializers';
+import Figure from "./Figure"
+import serializers from './serializers';
 
-const Events = () => {
+const Events = ({ all = false, page = false }) => {
 
 	const data = useStaticQuery(graphql`
 query {
@@ -33,14 +33,22 @@ query {
 }
 `)
 
-	const posts = data.allSanityPost.edges.slice(0, 4);
+	const posts = all ?
+		data.allSanityPost.edges :
+		data.allSanityPost.edges.slice(0, 4);
 
 	return (
 		<div className="post event" >
-			<header className="flex underline">
-				<h2>Upcoming News and Events</h2>
-				<Link to="/posts">See All News and Events</Link>
-			</header>
+			{page ?
+				<header className="flex underline">
+					<h1>Upcoming News and Events</h1>
+				</header>
+				:
+				<header className="flex underline">
+					<h2>Upcoming News and Events</h2>
+					<Link to="/posts">See All News and Events</Link>
+				</header>
+			}
 			{posts.map((post, i) => (
 				<article key={i}>
 					<Link to={`/post/${post.node.slug.current}`}>
