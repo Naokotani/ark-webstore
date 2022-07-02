@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../components/serializers';
-import Figure from '../components/Figure'
+import { graphql, Link, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import Figure from '../components/Figure';
+import serializers from '../components/serializers';
 
 const Events = () => {
 
@@ -36,7 +36,7 @@ query {
 	const posts = data.allSanityPost.edges.slice(0, 4);
 
 	return (
-		<div className="post" >
+		<div className="post event" >
 			<header className="flex underline">
 				<h2>Upcoming News and Events</h2>
 				<Link to="/posts">See All News and Events</Link>
@@ -62,9 +62,11 @@ query {
 							<div>
 								<h3>{post.node.title}</h3>
 								<time>{post.node.date}</time>
-								<BlockContent
-									blocks={post.node._rawBody}
-									serializers={serializers} />
+								<div className="fade post-text">
+									<BlockContent
+										blocks={post.node._rawBody}
+										serializers={serializers} />
+								</div>
 							</div>
 						</div>
 					</Link>

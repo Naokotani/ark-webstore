@@ -41,6 +41,10 @@
 	margin: 0;
 }
 
+.post .card-image {
+	align-items: center;
+}
+
 .post .house-image {
 	align-items: center;
 }
@@ -49,3 +53,13 @@
     grid-template-columns: 300px auto;
     grid-gap: 20px;
 }
+
+.post-text p {
+	text-overflow: ellipsis;
+	max-height: 100px;
+	overflow: hidden;
+}
+
+.fade {
+    mask-image: linear-gradient(180deg, #000 60%, transparent);
+ }

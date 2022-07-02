@@ -71,16 +71,12 @@ export default function Layout({ children }) {
 								{cartCount === 0 &&
 									<StaticImage
 										src="../images/cart-shopping-solid.svg"
-										width={22.5}
-										height={22.5}
 										alt="Shopping Cart"
 									/>
 								}
 								{cartCount > 0 &&
 									<StaticImage
 										src="../images/cart-plus-solid.svg"
-										widtth={22.5}
-										height={22.5}
 										alt="shopping Cart"
 									/>
 								}

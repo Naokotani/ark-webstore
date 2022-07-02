@@ -24,9 +24,10 @@
     --white: #fff;
 
 		/* L'Arche Colours */
-		--blue: #214c73;
+		--blue: #8FC1F3;
 		--darkBlue: #122A40;
-		--lightBlue: #7199BF;
+		--medDarkBlue: #0B4D76;
+		--lightBlue: #A8CEF3;
 		--lightGrey: #f5f5f5;
 		--grey: #646464;
 		--darkGrey: #323232;
@@ -54,10 +55,10 @@
 		--buttonColor: var(--lightOrange);
     --buttonTextColor: var(--white);
 
-		--navTextColor: var(--white);
+		--navTextColor: var(--medDarkBlue);
 		--navColor: var(--lightBlue);
 
-		--footerColor: var(--blue);
+		--footerColor: var(--darkBlue);
 		--footerText: var(--white);
 
     /* Styles */

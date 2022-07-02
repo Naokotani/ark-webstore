@@ -5,7 +5,6 @@
     left: 0;
     width: 100%;
     background: var(--headerBackground);
-    color: var(--white);
     height: var(--headerHeight);
     box-shadow: var(--level-2);
     display: flex;
@@ -15,33 +14,18 @@
 		z-index: 10;
 }
 
-.nav .main-nav {
-}
-
-.nav .store {
-	margin-right: 10px;
-}
-
 .nav .cart {
 	margin: 0;
 	display: flex;
-
 }	
 
 header nav li {
 	list-style: none;
 }
 
-.nav-login__card {
-    position: absolute;
-    top: 3rem;
-    right: 1rem;
-    margin-top: var(--headingHeight);
-    padding: 1rem;
-}
 
 header nav a {
-    color: var(--white);
+    color: var(--navTextColor);
     text-decoration: none;
 		font-size: var(--h5);
 }
@@ -50,10 +34,9 @@ header nav a:hover {
     border-bottom: solid 1px var(--white);
 }
 
-header nav a + a {
-    margin-left: 10px;
+ul.menu-items {
+	padding: 0;
 }
-
 
 .menu-items {
   position: relative;
@@ -62,12 +45,8 @@ header nav a + a {
 	justify-content: center;
 }
 
-.menu-items ul a {
-	border-radius: 4px;
-}
-
 .menu-items ul a:hover {
-	background: var(--darkBlue);
+	background: var(--blue);
 	border-bottom: none;
 }
 
@@ -77,8 +56,14 @@ header nav a + a {
   color: inherit;
 }
 
+.menu-items img {
+	height: 22.5px;
+	width: auto;
+}
+
 .dropdown a {
 	margin: 0 0.5rem;
+	border-radius: 4px;
 }	
 
 .menu-items .dropdown a {
