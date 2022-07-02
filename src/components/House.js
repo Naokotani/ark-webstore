@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import BlockContent from "@sanity/block-content-to-react";
 import Figure from "./Figure";
@@ -97,13 +97,24 @@ const House = (props) => {
 		return comp
 	}
 
-	const comp = props.page ? defComp() :
-		findComponentType(data.allSanityHouseComponent.edges)
-	const houses = createHouseArray(comp);
+	const [housesArr, setHousesArr] = useState([])
+
+	useEffect(() => {
+		const comp = props.page ? defComp() :
+			findComponentType(data.allSanityHouseComponent.edges)
+		const houses = createHouseArray(comp);
+
+		setHousesArr(houses)
+
+	}, []) 
+		
+		
+		
+
 
 	return (
 		<section>
-			{houses.map((house, i) => {
+			{housesArr.map((house, i) => {
 				const left = (i + 1) % 2
 				if (left) {
 					return (
