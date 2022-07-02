@@ -17,6 +17,7 @@ query {
           current
         }
         publishedAt
+				location
         mainImage {
           asset {
             _id
@@ -32,6 +33,7 @@ query {
   }
 }
 `)
+
 
 	const posts = all ?
 		data.allSanityPost.edges :
@@ -68,8 +70,9 @@ query {
 								</figure>
 							}
 							<div>
-								<h3>{post.node.title}</h3>
+								<h3 className="underline">{post.node.title}</h3>
 								<time>{post.node.date}</time>
+								<p className="text_small"> {post.node.location}</p>
 								<div className="fade post-text">
 									<BlockContent
 										blocks={post.node._rawBody}

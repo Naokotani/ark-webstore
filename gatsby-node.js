@@ -179,6 +179,7 @@ query {
         }
         title
         _rawBody
+				location
         mainImage {
           asset {
             _id
@@ -210,6 +211,7 @@ query {
 				date: edge.node.date,
 				image: edge.node.mainImage,
 				body: edge.node._rawBody,
+				location: edge.node.location
 			},
 		})
 	})
