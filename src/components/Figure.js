@@ -11,33 +11,76 @@ query {
     edges {
       node {
 				_id
+				isLink
+				URL
+				isFloat
         mainImage {
           asset {
             _id
           }
         }
         imageAlt
+				center
       }
     }
   }
 }
 	`)
 
-	const imageObj = node &&
-				data.allSanityLinkedImage.edges.filter( linkedImage => (
-		linkedImage.node._id === node._ref
-				));
+	function getImageObj() {
+		let imageObj = node &&
+			data.allSanityLinkedImage.edges.filter(linkedImage => (
+				linkedImage.node._id === node._ref
+			));
 
-	const imageRef = node ? imageObj[0].node.mainImage.asset._id : id;
+		imageObj = imageObj[0].node
 
-	const sanityConfig = { projectId: "3u2gq4se", dataset: "tbt" };
+		return imageObj
+	}
 
-	const image = getGatsbyImageData(imageRef, { maxWidth: 1024 }, sanityConfig);
+	function getImage(id) {
+		const sanityConfig = { projectId: "3u2gq4se", dataset: "tbt" };
+
+		return getGatsbyImageData(id, { maxWidth: 1024 }, sanityConfig);
+	}
+
+	function getImageClass(imageObj) {
+		let imageClass = "";
+		console.log(imageObj)
+
+		if (imageObj.center === "Yes") {
+			imageClass = "center-image"
+		}
+
+		if (imageObj.isFloat === "Yes") {
+			imageClass = "page-image"
+		}
+
+		console.log(imageClass)
+
+		return imageClass
+	}
+
+
+	let imageObj = false;
+
+	if (node) {
+		imageObj = getImageObj()
+	}
+
+	const image = node ?
+		getImage(imageObj.mainImage.asset._id) :
+		getImage(id);
+
+	const imageClass = node ? getImageClass(imageObj) : ""
+
+
+
+
 
 	return (
-		<figure>
-			<GatsbyImage image={image} alt="foo" />
-			{node && <figcaption>{node.caption}</figcaption>}
+		<figure className={imageClass}>
+			<GatsbyImage image={image} alt="" />
 		</figure>
 	);
 };

@@ -1,7 +1,7 @@
 import * as React from "react";
 import BlockContent from "@sanity/block-content-to-react";
-import Layout from "../components/Layout";
 import serializers from "../components/serializers";
+import Layout from "../components/Layout";
 
 const Page = ({ pageContext }) => {
 	const page = pageContext;

@@ -1,4 +1,16 @@
 .page h2, .page h3 {
 	max-width: 45rem;
 }
-	
+
+.page p, .page blockquote {
+	margin-left: 1rem;
+}
+
+.page img {border-radius: 4px;}
+
+.center-image {
+	max-width: 40rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

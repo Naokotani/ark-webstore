@@ -4,14 +4,16 @@ import Layout from "../components/Layout";
 import serializers from "../components/serializers";
 
 const SubPage = ({ pageContext }) => {
-  const page = pageContext;
+	const page = pageContext;
 
-  return (
-    <Layout>
-      <h1>{page.title}</h1>
-      <BlockContent blocks={page.body} serializers={serializers} />
-    </Layout>
-  );
+	return (
+		<Layout>
+			<article className="page">
+				<h1>{page.title}</h1>
+				<BlockContent blocks={page.body} serializers={serializers} />
+			</article>
+		</Layout>
+	);
 };
 
 export default SubPage;

@@ -30,7 +30,18 @@ query {
 	const dropdownItems = subPages.edges.filter(page => (
 		slug === page.node.parentPage.slug.current
 	))
-
+	
+	// if(link === "Community") {
+	// 	dropdownItems.push({
+	// 		node: {
+	// 			link: "News & Events",
+	// 			slug: {
+	// 				current: "posts"
+	// 			}
+	// 		}
+	// 	})
+	// }
+	
 	return (
 		<li
 			onMouseEnter={() => setShowDropdown(true)}

@@ -57,6 +57,10 @@ p.header-date {
 	align-items: center;
 }
 
+.post a {
+	color: inherit;
+}
+
 .post .grid {
     grid-template-columns: 300px auto;
     grid-gap: 20px;
@@ -92,4 +96,5 @@ p.header-date {
 
 article.page {
 	min-height: 500px;
+	max-width: 40rem;
 }

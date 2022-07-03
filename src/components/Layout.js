@@ -47,8 +47,8 @@ export default function Layout({ children }) {
 	const links = data.allSanityPage.edges.filter(
 		(edge) => edge.node.slug.current !== "l-arche-cape-breton"
 	)
-	// return the header with the nav, logo/link, link menu, and the footer. Children are
-	// in the main tag.
+
+	console.log(links)
 
 	return (
 		<StoreContextProvider>
@@ -64,6 +64,9 @@ export default function Layout({ children }) {
 								link={link.node.link}
 								key={index} />
 						))}
+						<li>
+							<Link to="/posts">News & Events</Link>
+						</li>
 						<li>
 							<Link className="store" to="/products">Store</Link>
 						</li>
