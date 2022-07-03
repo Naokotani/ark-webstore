@@ -107,10 +107,6 @@ const House = (props) => {
 		setHousesArr(houses)
 
 	}, []) 
-		
-		
-		
-
 
 	return (
 		<section>

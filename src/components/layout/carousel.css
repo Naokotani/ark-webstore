@@ -1,10 +1,9 @@
 .car section {
-	color: var(--white);
-	background-color: rgba(1,1,1,0.5);
+	color: var(--navTextColor);
+	background-color: var(--navColor);
 	font-family: var(--bodyFont);
 	border-radius: 5px;
 	padding: 0 1rem;
-
 }
 	
 .carousel--bottom-right {

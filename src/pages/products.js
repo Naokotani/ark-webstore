@@ -26,7 +26,7 @@ const ProductsPage = ({ data }) => {
 				{data.allShopifyProduct.edges.map(({ node }) => {
 					const image = getImage(node.featuredImage.gatsbyImageData)
 					return (
-						<li>
+						<li className="products--list">
 							<Link key={node.shopifyId} to={`/products/${node.handle}`}>
 								<article className="products--card card">
 									<GatsbyImage image={image} alt="" />

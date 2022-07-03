@@ -5,12 +5,15 @@ import PdfLink from './PdfLink';
 import House from './House';
 import Role from './Role';
 import Post from './Post';
+import Aside from './Aside';
 
 const serializers = {
 	container: ({ children }) => <React.Fragment>{children}</React.Fragment>,
 	types: {
 		roleComponent: Role,
 		image: Figure,
+		linkedImage: Figure,
+		aside: Aside,
 		house: House,
 		postComponent: Post,
 	},

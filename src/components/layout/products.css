@@ -49,6 +49,10 @@
 	font-size: var(--h3);
 }
 
+.products--layout li.products--list {
+	list-style: none;
+}
+
 .product h1 {
 	align-items: flex-end;
 }

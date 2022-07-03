@@ -10,6 +10,7 @@ import "./layout/carousel.css";
 import "./layout/nav.css";
 import './layout/products.css'
 import "./layout/post.css"
+import "./layout/page.css"
 
 export default function Layout({ children }) {
 
