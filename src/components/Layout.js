@@ -70,18 +70,28 @@ export default function Layout({ children }) {
 						<li>
 							<Link className="store" to="/products">Store</Link>
 						</li>
-						<li>
+						<li clasName="cart">
 							<Link className="cart" to="/checkout">
 								{cartCount === 0 &&
 									<StaticImage
 										src="../images/cart-shopping-solid.svg"
 										alt="Shopping Cart"
+										style={{
+											width: "23.5px",
+											height: "22.5px",
+											display: "flex",
+											position: "relative",
+											display: "flex",
+											alignItems: "center",
+											justifyContent: "center",
+										}}
 									/>
 								}
 								{cartCount > 0 &&
 									<StaticImage
 										src="../images/cart-plus-solid.svg"
 										alt="shopping Cart"
+										style={{ width: "22.5px", height: "auto" }}
 									/>
 								}
 							</Link>
