@@ -23,6 +23,7 @@ query {
   }
 }
 `)
+
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const subPages = data.allSanitySubpage
@@ -30,7 +31,7 @@ query {
 	const dropdownItems = subPages.edges.filter(page => (
 		slug === page.node.parentPage.slug.current
 	))
-	
+
 	return (
 		<li
 			onMouseEnter={() => setShowDropdown(true)}

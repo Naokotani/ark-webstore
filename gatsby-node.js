@@ -126,6 +126,48 @@ query {
 		})
 	})
 
+	//Create humans pages
+	const humanQuery = await graphql(`
+query {
+  allSanityHuman {
+    edges {
+      node {
+        _rawBody
+        _id
+        mainImage {
+          asset {
+            _id
+          }
+        }
+        title
+        slug {
+          current
+        }
+      }
+    }
+  }
+}
+ `)
+
+	if (humanQuery.errors) {
+		throw humanQuery.errors
+	}
+
+	const humans = humanQuery.data.allSanityHuman.edges || []
+  humans.forEach((edge) => {
+		const path = `/humans/${edge.node.slug.current}`
+
+		createPage({
+			path,
+			component: require.resolve('./src/templates/human.js'),
+			context: {
+				title: edge.node.title,
+				body: edge.node._rawBody,
+				imageId: edge.node.mainImage.asset._id,
+			},
+		})
+	})
+
 	//Create generic pages
 	const subPageQuery = await graphql(`
 query {
@@ -156,6 +198,7 @@ query {
 
 	const subPages = subPageQuery.data.allSanitySubpage.edges || []
   subPages.forEach((edge) => {
+		if (edge.node.slug.current !== 'humans') {
 		const path = `/${edge.node.parentPage.slug.current}/${edge.node.slug.current}`
 
 		createPage({
@@ -166,6 +209,7 @@ query {
 				body: edge.node._rawBody,
 			},
 		})
+		}
 	})
 	
 	// Create News and events pages

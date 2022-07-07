@@ -80,7 +80,7 @@ p.header-date {
 }
 
 .fade__human {
-	max-height: 300px;
+	max-height: 200px;
 }
 	
 .fade {
@@ -110,10 +110,10 @@ article.page {
 	max-width: 40rem;
 }
 
-human {
+.human {
 	color: var(--textColor);
 }
 
-human a {
-	color: var(--linkColor)
+.human-more {
+	color: var(--linkColor);
 }

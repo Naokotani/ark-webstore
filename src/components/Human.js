@@ -7,9 +7,9 @@ import serializers from "./serializers";
 const Human = ({ body, imageId, title, slug }) => {
 
 	return (
-		<div className="human">
-			<Link to={`/humans/$[{slug}]`}>
-				<article className="card grid aside-right">
+		<div className="">
+			<Link to={`/humans/${slug}`}>
+				<article className="card grid aside-right human">
 					<div>
 						<h2>{title}</h2>
 						<div className="fade post-text fade__human">
@@ -17,7 +17,7 @@ const Human = ({ body, imageId, title, slug }) => {
 								blocks={body}
 								serializers={serializers} />
 						</div>
-						<p>Read More</p>
+						<p className="human-more">Read More</p>
 					</div>
 					<figure>
 						<Figure id={imageId} />
