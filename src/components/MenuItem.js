@@ -31,17 +31,6 @@ query {
 		slug === page.node.parentPage.slug.current
 	))
 	
-	// if(link === "Community") {
-	// 	dropdownItems.push({
-	// 		node: {
-	// 			link: "News & Events",
-	// 			slug: {
-	// 				current: "posts"
-	// 			}
-	// 		}
-	// 	})
-	// }
-	
 	return (
 		<li
 			onMouseEnter={() => setShowDropdown(true)}
@@ -52,7 +41,7 @@ query {
 				<ul
 					className="dropdown show">
 					{dropdownItems.map(item => (
-						<li>
+						<li key={item.node.link}>
 							<Link
 								to={`/${slug}/${item.node.slug.current}`}>
 								{item.node.link}

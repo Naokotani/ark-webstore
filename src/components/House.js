@@ -100,8 +100,7 @@ const House = (props) => {
 	const [housesArr, setHousesArr] = useState([])
 
 	useEffect(() => {
-		const comp = props.page ? defComp() :
-			findComponentType(data.allSanityHouseComponent.edges)
+		const comp = defComp();
 		const houses = createHouseArray(comp);
 
 		setHousesArr(houses)
@@ -114,7 +113,9 @@ const House = (props) => {
 				const left = (i + 1) % 2
 				if (left) {
 					return (
-						<article className="house post grid aside-right" key={i}>
+						<article
+							className="house post grid aside-right"
+							key={house.node._id}>
 							<section>
 								<header className="flex underline">
 									<h2>{house.node.title}</h2>
@@ -134,7 +135,9 @@ const House = (props) => {
 					)
 				} else {
 					return (
-						<article className="house post grid aside-left" key={i}>
+						<article
+							className="house post grid aside-left"
+							key={house.node._id}>
 							<aside className="flex flex-around house-image">
 								<Figure id={house.node.mainImage.asset._id} alt="" />
 							</aside>

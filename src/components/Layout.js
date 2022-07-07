@@ -48,8 +48,6 @@ export default function Layout({ children }) {
 		(edge) => edge.node.slug.current !== "l-arche-cape-breton"
 	)
 
-	console.log(links)
-
 	return (
 		<StoreContextProvider>
 			<header className="nav">
@@ -70,7 +68,7 @@ export default function Layout({ children }) {
 						<li>
 							<Link className="store" to="/products">Store</Link>
 						</li>
-						<li clasName="cart">
+						<li className="cart">
 							<Link className="cart" to="/checkout">
 								{cartCount === 0 &&
 									<StaticImage

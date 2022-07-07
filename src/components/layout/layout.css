@@ -294,7 +294,8 @@ button.plain:hover {
 .layout {
     padding: calc(3rem + var(--headerHeight))var(--containerPadding);
 		min-height: calc(100vh - var(--footerHeight));
-	
+		max-width: 1660px;
+		margin: auto;
 }
 
 .grid {

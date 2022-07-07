@@ -12,7 +12,7 @@ query {
       node {
 				_id
 				isLink
-				URL
+				imageURL
 				isFloat
         mainImage {
           asset {
@@ -46,7 +46,6 @@ query {
 
 	function getImageClass(imageObj) {
 		let imageClass = "";
-		console.log(imageObj)
 
 		if (imageObj.center === "Yes") {
 			imageClass = "center-image"
@@ -56,17 +55,10 @@ query {
 			imageClass = "page-image"
 		}
 
-		console.log(imageClass)
-
-		return imageClass
+		return imageClass;
 	}
 
-
-	let imageObj = false;
-
-	if (node) {
-		imageObj = getImageObj()
-	}
+	const imageObj = node ? getImageObj() : {isLink: "No"}
 
 	const image = node ?
 		getImage(imageObj.mainImage.asset._id) :
@@ -74,14 +66,20 @@ query {
 
 	const imageClass = node ? getImageClass(imageObj) : ""
 
-
-
-
-
 	return (
-		<figure className={imageClass}>
-			<GatsbyImage image={image} alt="" />
-		</figure>
+		<div>
+			{imageObj.isLink === "No"?
+				<figure className={imageClass}>
+					<GatsbyImage image={image} alt="" />
+				</figure>
+				:
+				<figure className={imageClass}>
+					<a href={imageObj.imageURL}>
+						<GatsbyImage image={image} alt="" />
+					</a>
+				</figure>
+			}
+		</div>
 	);
 };
 

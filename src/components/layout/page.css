@@ -8,6 +8,11 @@
 
 .page img {border-radius: 4px;}
 
+.page {
+	max-width: 50rem;
+	margin: auto;					 
+};
+
 .center-image {
 	max-width: 40rem;
 	display: flex;

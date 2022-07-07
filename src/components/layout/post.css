@@ -10,6 +10,10 @@
   justify-content: center;	
 }
 
+.post {
+	max-width: 1230px;
+	margin: auto;
+}
 .post h1, .post h2, .post h3 {
 	margin-bottom: 0;
 	border-bottom: none;
@@ -66,12 +70,19 @@ p.header-date {
     grid-gap: 20px;
 }
 
-.post-text p {
+.fade-text {
 	text-overflow: ellipsis;
-	max-height: 100px;
 	overflow: hidden;
 }
 
+.fade__post {
+	max-height: 100px;
+}
+
+.fade__human {
+	max-height: 300px;
+}
+	
 .fade {
     mask-image: linear-gradient(180deg, #000 60%, transparent);
  }
@@ -97,4 +108,12 @@ p.header-date {
 article.page {
 	min-height: 500px;
 	max-width: 40rem;
+}
+
+human {
+	color: var(--textColor);
+}
+
+human a {
+	color: var(--linkColor)
 }

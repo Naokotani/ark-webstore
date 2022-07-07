@@ -34,8 +34,6 @@ query {
 		));
 
 	const aside = asideArr[0].node;
-	console.log(aside)
-
 
 	return (
 		<div className="">

@@ -70,7 +70,7 @@ query {
 								<h3 className="underline">{post.node.title}</h3>
 								<time>{post.node.date}</time>
 								<p className="text_small"> {post.node.location}</p>
-								<div className="fade post-text">
+								<div className="fade fade-text fade__post">
 									<BlockContent
 										blocks={post.node._rawBody}
 										serializers={serializers} />
