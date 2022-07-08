@@ -89,7 +89,15 @@ export default function Layout({ children }) {
 									<StaticImage
 										src="../images/cart-plus-solid.svg"
 										alt="shopping Cart"
-										style={{ width: "22.5px", height: "auto" }}
+										style={{
+											width: "23.5px",
+											height: "22.5px",
+											display: "flex",
+											position: "relative",
+											display: "flex",
+											alignItems: "center",
+											justifyContent: "center",
+										}}
 									/>
 								}
 							</Link>

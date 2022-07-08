@@ -12,6 +12,7 @@
     align-items: center;
     padding: 0 var(--containerPadding);
 		z-index: 10;
+		padding: 2rem;
 }
 
 .nav .cart {
@@ -22,6 +23,7 @@
 .cart img {
 	height: 22.5px;
 	width: 22.5px;
+	padding: 0;
 }
 
 header nav li {
@@ -49,6 +51,10 @@ ul.menu-items {
 
 a.cart {
 	padding: 0;
+}
+
+li.cart {
+	min-width: max-content;
 }
 
 .menu-items ul li:hover {
@@ -95,6 +101,7 @@ li.cart {
   left: auto;
   font-size: 0.875rem;
   z-index: 9999;
+	width: 8rem;
   min-width: max-content;
   padding: 0.5rem 0;
 	margin-top: -0.3rem;
