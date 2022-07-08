@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Link } from 'gatsby'
 import BlockContent from "@sanity/block-content-to-react";
 import Figure from "./Figure";
 import serializers from "./serializers";

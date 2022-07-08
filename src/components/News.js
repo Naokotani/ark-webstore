@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../components/serializers';
 import Figure from '../components/Figure'

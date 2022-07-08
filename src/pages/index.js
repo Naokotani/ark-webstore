@@ -5,6 +5,7 @@ import BlockContent from "@sanity/block-content-to-react";
 import serializers from "../components/serializers";
 import { Carousel } from 'react-responsive-carousel';
 import Layout from "../components/Layout";
+import Newsletter from "../components/Newsletter"
 
 const HomePage = ({ data }) => {
 	const page = data.sanityPage;
@@ -48,6 +49,7 @@ const HomePage = ({ data }) => {
 				))}
 			</Carousel>
 			<BlockContent blocks={page._rawBody} serializers={serializers} />
+		<Newsletter home={true} />
 		</Layout>
 	);
 };

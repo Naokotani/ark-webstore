@@ -117,3 +117,8 @@ article.page {
 .human-more {
 	color: var(--linkColor);
 }
+
+.pdf {
+    grid-template-columns: 300px 930px;
+    grid-gap: 20px;
+}

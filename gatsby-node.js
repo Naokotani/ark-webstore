@@ -154,7 +154,7 @@ query {
 	}
 
 	const humans = humanQuery.data.allSanityHuman.edges || []
-  humans.forEach((edge) => {
+	humans.forEach((edge) => {
 		const path = `/humans/${edge.node.slug.current}`
 
 		createPage({
@@ -197,21 +197,21 @@ query {
 	}
 
 	const subPages = subPageQuery.data.allSanitySubpage.edges || []
-  subPages.forEach((edge) => {
+	subPages.forEach((edge) => {
 		if (edge.node.slug.current !== 'humans') {
-		const path = `/${edge.node.parentPage.slug.current}/${edge.node.slug.current}`
+			const path = `/${edge.node.parentPage.slug.current}/${edge.node.slug.current}`
 
-		createPage({
-			path,
-			component: require.resolve('./src/templates/subPage.js'),
-			context: {
-				title: edge.node.title,
-				body: edge.node._rawBody,
-			},
-		})
+			createPage({
+				path,
+				component: require.resolve('./src/templates/subPage.js'),
+				context: {
+					title: edge.node.title,
+					body: edge.node._rawBody,
+				},
+			})
 		}
 	})
-	
+
 	// Create News and events pages
 	const postQuery = await graphql(`
 {
@@ -260,3 +260,53 @@ query {
 		})
 	})
 }
+const webpack = require("webpack");
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions, plugins }) => {
+	if (stage === "build-html" || stage === "develop-html") {
+		actions.setWebpackConfig({
+			module: {
+				rules: [
+					{
+						test: /react-pdf/, // check /pdfjs-dist/ too
+						use: loaders.null()
+					},
+					{
+						test: /pdfjs-dist/, // check /pdfjs-dist/ too
+						use: loaders.null()
+					},
+          {
+						test: /safer-buffer/,
+						use: loaders.null()
+					}
+				]
+			}
+		});
+	}
+	actions.setWebpackConfig({
+		resolve: {
+			fallback: {
+				module: "empty",
+				dgram: "empty",
+				dns: "mock",
+				fs: "empty",
+				http2: "empty",
+				net: "empty",
+				tls: "empty",
+				child_process: "empty",
+				process: require.resolve("process/browser"),
+				zlib: require.resolve("browserify-zlib"),
+				stream: require.resolve("stream-browserify"),
+				util: require.resolve("util"),
+				buffer: require.resolve("buffer"),
+				asset: require.resolve("assert")
+			}
+		},
+		plugins: [
+			new webpack.ProvidePlugin({
+				Buffer: ["buffer", "Buffer"],
+				process: "process/browser"
+			})
+		]
+	});
+};

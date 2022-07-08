@@ -34,10 +34,13 @@ query {
 
 	return (
 		<li
-			onMouseEnter={() => setShowDropdown(true)}
-			onMouseLeave={() => setShowDropdown(false)}
 			className="menu-items">
-			<Link to={`/${slug}`}>{link}</Link>
+			<Link
+				onMouseEnter={() => setShowDropdown(true)}
+				onMouseLeave={() => setShowDropdown(false)}
+				to={`/${slug}`}>
+				{link}
+			</Link>
 			{dropdownItems[0] && showDropdown &&
 				<ul
 					className="dropdown show">
