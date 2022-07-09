@@ -34,10 +34,10 @@ query {
 
 	return (
 		<li
+			onMouseEnter={() => setShowDropdown(true)}
+			onMouseLeave={() => setShowDropdown(false)}
 			className="menu-items">
 			<Link
-				onMouseEnter={() => setShowDropdown(true)}
-				onMouseLeave={() => setShowDropdown(false)}
 				to={`/${slug}`}>
 				{link}
 			</Link>

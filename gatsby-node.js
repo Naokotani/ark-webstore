@@ -295,7 +295,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions, plugins }) => {
 				tls: "empty",
 				child_process: "empty",
 				process: require.resolve("process/browser"),
-				zlib: require.resolve("browserify-zlib"),
 				stream: require.resolve("stream-browserify"),
 				util: require.resolve("util"),
 				buffer: require.resolve("buffer"),

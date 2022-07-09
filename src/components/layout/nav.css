@@ -49,10 +49,6 @@ ul.menu-items {
 	border-bottom: 1px solid var(--navColor);
 }
 
-a.cart {
-	padding: 0;
-}
-
 li.cart {
 	min-width: max-content;
 }

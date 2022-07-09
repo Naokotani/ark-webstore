@@ -1,5 +1,6 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import Figure from "./Figure"
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { StoreContextProvider, useCartCount } from "../context/StoreContext"
 import MenuItem from './MenuItem'
@@ -38,10 +39,29 @@ export default function Layout({ children }) {
   	  }
   	}
   } 
+  allSanityLinkedImage(filter: {title: {in: ["Full Cart", "Empty Cart"]}}) {
+    edges {
+      node {
+				title
+        mainImage {
+          asset {
+            _id
+          }
+        }
+      }
+    }
+  }
 }
   `);
 
 	const cartCount = useCartCount();
+	const emptyCart =
+				data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Empty Cart'));
+	const emptyCartId = emptyCart[0].node.mainImage.asset._id;
+
+	const fullCart =
+				data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Full Cart'));
+	const fullCartId = fullCart[0].node.mainImage.asset._id;
 
 	// // Remove the home page link with the slug "l-arche-cape-breton"
 	const links = data.allSanityPage.edges.filter(
@@ -71,34 +91,10 @@ export default function Layout({ children }) {
 						<li className="cart">
 							<Link className="cart" to="/checkout">
 								{cartCount === 0 &&
-									<StaticImage
-										src="../images/cart-shopping-solid.svg"
-										alt="Shopping Cart"
-										style={{
-											width: "23.5px",
-											height: "22.5px",
-											display: "flex",
-											position: "relative",
-											display: "flex",
-											alignItems: "center",
-											justifyContent: "center",
-										}}
-									/>
+								 <Figure id={emptyCartId} classProp="cart"/>
 								}
 								{cartCount > 0 &&
-									<StaticImage
-										src="../images/cart-plus-solid.svg"
-										alt="shopping Cart"
-										style={{
-											width: "23.5px",
-											height: "22.5px",
-											display: "flex",
-											position: "relative",
-											display: "flex",
-											alignItems: "center",
-											justifyContent: "center",
-										}}
-									/>
+								 <Figure id={fullCartId} classProp="cart"/>
 								}
 							</Link>
 						</li>
