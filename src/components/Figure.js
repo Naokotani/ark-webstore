@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image";
 import { getGatsbyImageData } from "gatsby-source-sanity";
 
-const Figure = ({ node, id, classProp="" }) => {
+const Figure = ({ node, id, classProp="", style="" }) => {
 
 	const data = useStaticQuery(graphql`
 query {
@@ -75,7 +75,7 @@ query {
 				:
 				<figure className={imageClass}>
 					<a href={imageObj.imageURL}>
-						<GatsbyImage image={image} alt="" />
+						<GatsbyImage image={image} alt="" style={style} />
 					</a>
 				</figure>
 			}

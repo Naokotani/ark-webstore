@@ -56,11 +56,11 @@ export default function Layout({ children }) {
 
 	const cartCount = useCartCount();
 	const emptyCart =
-				data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Empty Cart'));
+		data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Empty Cart'));
 	const emptyCartId = emptyCart[0].node.mainImage.asset._id;
 
 	const fullCart =
-				data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Full Cart'));
+		data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Full Cart'));
 	const fullCartId = fullCart[0].node.mainImage.asset._id;
 
 	// // Remove the home page link with the slug "l-arche-cape-breton"
@@ -91,10 +91,24 @@ export default function Layout({ children }) {
 						<li className="cart">
 							<Link className="cart" to="/checkout">
 								{cartCount === 0 &&
-								 <Figure id={emptyCartId} classProp="cart"/>
+									<Figure
+										id={emptyCartId}
+										classProp="cart"
+										style={{
+											width: "22.5px",
+											height: "22.5px"
+										}}
+									/>
 								}
 								{cartCount > 0 &&
-								 <Figure id={fullCartId} classProp="cart"/>
+									<Figure
+										id={fullCartId}
+										classProp="cart"
+										style={{
+											width: "22.5px",
+											height: "22.5px"
+										}}
+									/>
 								}
 							</Link>
 						</li>
