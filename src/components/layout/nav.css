@@ -15,21 +15,9 @@
 		padding: 2rem;
 }
 
-.nav .cart {
-	margin: 0;
-	display: flex;
-}	
-
-.cart img {
-	height: 22.5px;
-	width: 22.5px;
-	padding: 0;
-}
-
 header nav li {
 	list-style: none;
 }
-
 
 header nav a {
     color: var(--navTextColor);
@@ -49,10 +37,6 @@ ul.menu-items {
 	border-bottom: 1px solid var(--navColor);
 }
 
-li.cart {
-	min-width: max-content;
-}
-
 .menu-items ul li:hover {
 	background: var(--blue);
 	border: 0;
@@ -63,10 +47,6 @@ li.cart {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-li.cart {
-	width: 22.5px
 }
 
 .menu-items li {

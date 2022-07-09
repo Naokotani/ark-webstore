@@ -3,6 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import Figure from "./Figure"
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { StoreContextProvider, useCartCount } from "../context/StoreContext"
+import { BsCartCheckFill, BsFillCartFill } from "react-icons/bs";
 import MenuItem from './MenuItem'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import "./layout/layout.css";
@@ -91,24 +92,10 @@ export default function Layout({ children }) {
 						<li className="cart">
 							<Link className="cart" to="/checkout">
 								{cartCount === 0 &&
-									<Figure
-										id={emptyCartId}
-										classProp="cart"
-										style={{
-											width: "22.5px",
-											height: "22.5px"
-										}}
-									/>
+									<BsFillCartFill />
 								}
 								{cartCount > 0 &&
-									<Figure
-										id={fullCartId}
-										classProp="cart"
-										style={{
-											width: "22.5px",
-											height: "22.5px"
-										}}
-									/>
+									<BsCartCheckFill />
 								}
 							</Link>
 						</li>
