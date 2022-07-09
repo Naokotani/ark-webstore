@@ -1,12 +1,13 @@
 import React from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
+import { pdfjs } from 'react-pdf';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import BlockContent from "@sanity/block-content-to-react";
 import serializers from "../components/serializers";
 
-const Newsletter = ({pageContext, home=false}) => {
+const Newsletter = ({ pageContext, home = false }) => {
 
-	pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+	pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 	const data = useStaticQuery(graphql`
 query {
@@ -31,8 +32,8 @@ query {
 `)
 
 	const pdfs = home === true ?
-				[data.allSanityNewsletter.edges[0]]:
-				data.allSanityNewsletter.edges
+		[data.allSanityNewsletter.edges[0]] :
+		data.allSanityNewsletter.edges
 
 	return (
 		<div>
