@@ -260,6 +260,7 @@ query {
 		})
 	})
 }
+
 const webpack = require("webpack");
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions, plugins }) => {
@@ -275,7 +276,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions, plugins }) => {
 						test: /pdfjs-dist/, // check /pdfjs-dist/ too
 						use: loaders.null()
 					},
-          {
+					{
 						test: /safer-buffer/,
 						use: loaders.null()
 					}
@@ -295,6 +296,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions, plugins }) => {
 				tls: "empty",
 				child_process: "empty",
 				process: require.resolve("process/browser"),
+				zlib: require.resolve("browserify-zlib"),
 				stream: require.resolve("stream-browserify"),
 				util: require.resolve("util"),
 				buffer: require.resolve("buffer"),

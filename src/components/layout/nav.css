@@ -15,6 +15,16 @@
 		padding: 2rem;
 }
 
+.cart {
+	position: relative;
+}
+
+.cart-num {
+	position: abosolute;
+	z-index: 9999;
+}
+	
+
 header nav li {
 	list-style: none;
 }

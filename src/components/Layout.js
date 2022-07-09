@@ -89,13 +89,19 @@ export default function Layout({ children }) {
 						<li>
 							<Link className="store" to="/products">Store</Link>
 						</li>
-						<li className="cart">
+						<li>
 							<Link className="cart" to="/checkout">
 								{cartCount === 0 &&
 									<BsFillCartFill />
 								}
 								{cartCount > 0 &&
-									<BsCartCheckFill />
+									<span className="cart">
+										<BsCartCheckFill />
+										<span className="cart-num">
+											{cartCount}
+										</span>
+									</span>
+
 								}
 							</Link>
 						</li>
