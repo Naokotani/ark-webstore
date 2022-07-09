@@ -15,24 +15,22 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@sanity/block-content-to-react": "^3.0.0",
-    "dotenv": "^16.0.1",
-    "gatsby": "^4.18.0",
+    "react": "^18.2.0",
     "gatsby-plugin-image": "^2.18.0",
+    "react-pdf": "^5.7.2",	 
+    "react-responsive-carousel": "^3.2.23",
+    "stream-browserify": "^3.0.0",
+    "shopify-buy": "^2.16.1",
     "gatsby-plugin-modal-routing": "^1.2.0",
     "gatsby-plugin-sharp": "^4.18.0",
     "gatsby-source-filesystem": "^4.18.0",
     "gatsby-source-sanity": "^7.4.2",
     "gatsby-source-shopify": "^7.7.0",
-    "gatsby-transformer-sharp": "^4.5.0",
-    "node-fetch": "^3.2.6",
-    "react": "^18.2.0",
+    "gatsby-transformer-sharp": "^4.18.0",
     "react-dom": "^18.2.0",
-    "react-pdf": "^5.7.2",
-    "react-responsive-carousel": "^3.2.23",
+    "@sanity/block-content-to-react": "^3.0.0",
+    "dotenv": "^16.0.1",
     "react-router": "^6.3.0",
-    "shopify-buy": "^2.16.1",
-    "stream-browserify": "^3.0.0",
-    "ws": "^7.4.5"
+    "gatsby": "^4.18.0"
   }
 }
