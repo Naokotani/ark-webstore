@@ -19,3 +19,10 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.pdf-iframe {
+	margin-top: -3rem;
+	width: 100vw;
+  margin-left: calc(50% - 50vw);
+	height: calc(100vh - var(--headerHeight));
+}

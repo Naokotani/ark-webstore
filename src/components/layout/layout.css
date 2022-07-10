@@ -41,7 +41,7 @@
 
     /*define colour intentions*/
 
-    --primary: var(--blue);
+    --primary: var(--medDarkBlue);
     --danger: var(--red);
     --background: var(--white);
     --textColor: var(--darkGrey);
@@ -55,8 +55,8 @@
     --blockquoteBg: var(--lightBlue);
 		--blockquoteText: var(--medDarkBlue);
 
-		--buttonColor: var(--lightOrange);
-    --buttonTextColor: var(--white);
+		--buttonColor: var(--blue);
+    --buttonTextColor: var(--darkBlue);
 
 		--navTextColor: var(--medDarkBlue);
 		--navColor: var(--lightBlue);
@@ -241,11 +241,9 @@ figure {
 }
 
 button {
-    --buttonColor: var(--prmimary);
-
     appearance: none;
-    color: var(--white);
-    background-color: var(--buttonColor);
+    color: var(--buttonTextColor);
+		background-color: var(--buttonColor);
     border: none;
     margin: 2px;
     border-radius: 5px;
@@ -256,6 +254,7 @@ button {
 
 button:hover {
     box-shadow:var(--level-2);
+		color: var(--white);
 		background-color: var(--darkBlue);
     margin: 0;
 }

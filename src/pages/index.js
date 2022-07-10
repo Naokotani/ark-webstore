@@ -5,7 +5,6 @@ import BlockContent from "@sanity/block-content-to-react";
 import serializers from "../components/serializers";
 import { Carousel } from 'react-responsive-carousel';
 import Layout from "../components/Layout";
-import Newsletter from "../components/Newsletter"
 
 const HomePage = ({ data }) => {
 	const page = data.sanityPage;
@@ -49,12 +48,6 @@ const HomePage = ({ data }) => {
 				))}
 			</Carousel>
 			<BlockContent blocks={page._rawBody} serializers={serializers} />
-			<Newsletter/>
-			<iframe
-				src={`https://cdn.sanity.io/files/3u2gq4se/tbt/0e6f2d9d57b45e885da15a42904a3fd553c56769.pdf#view=fitH`}
-				title="testPdf"
-				height="500px"
-				width="100%" />
 		</Layout>
 	);
 };

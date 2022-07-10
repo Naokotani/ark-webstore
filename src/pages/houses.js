@@ -3,6 +3,7 @@ import Layout from '../components/Layout'
 import House from '../components/House'
 
 const Houses = ({ data }) => {
+
 	return (
 		<Layout>
 			<House page={true} />

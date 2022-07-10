@@ -1,8 +1,8 @@
 import React from 'react';
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import BlockContent from "@sanity/block-content-to-react";
 import serializers from "../components/serializers";
+import Figure from "./Figure"
 
 const Newsletter = ({ pageContext, home = false }) => {
 
@@ -16,9 +16,15 @@ query {
         slug {
           current
         }
+				mainImage {
+					asset {
+						_id
+					}
+						}
 				date(formatString: "dddd MMMM Do, YYYY")
         pdf {
           asset {
+						_id
             url
           }
         }
@@ -31,6 +37,7 @@ query {
 	const pdfs = home === true ?
 		[data.allSanityNewsletter.edges[0]] :
 		data.allSanityNewsletter.edges
+	console.log(pdfs)
 
 	return (
 		<div>
@@ -42,15 +49,9 @@ query {
 							{pdf.node.date}
 						</time>
 					</header>
-					<div className="grid pdf">
-						<Link to={`/am-furan/${pdf.node.slug.current}`}>
-							<Document
-								onLoadError={console.error}
-								file={`${pdf.node.pdf.asset.url}`}>
-								<Page
-									width={300}
-									pageNumber={1} />
-							</Document>
+					<div className="card grid pdf">
+						<Link to={`/pdfs/${pdf.node.pdf.asset._id}`}>
+							<Figure id={pdf.node.mainImage.asset._id} />
 						</Link>
 						<div>
 							<BlockContent

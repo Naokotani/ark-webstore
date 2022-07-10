@@ -3,6 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import BlockContent from "@sanity/block-content-to-react";
 import Figure from "./Figure";
 import serializers from "./serializers";
+import { getComposeTypeName } from "graphql-compose";
 
 const House = (props) => {
 
@@ -49,6 +50,11 @@ const House = (props) => {
 				(comp) => comp.node._id === props.node._ref
 			);
 			return comp[0].node;
+		} else {
+			return {
+				type: "All",
+				number: data.allSanityHouse.edges.length
+			}
 		}
 	}
 
@@ -80,32 +86,39 @@ const House = (props) => {
 		let houses = [];
 		let h = data.allSanityHouse.edges;
 
-		if (comp.number && h.length >= comp.number) {
+		if (
+			comp.type === "All" ||
+			comp.type === "Random" &&
+			h.length >= comp.number
+		) {
 			houses = randomHouseArray(comp.number, h, houses);
 		} else if (h.length < comp.number) {
 			console.error("Not enough Items in array.");
-		} else {
+		} else if (comp.type === "Specific") {
 			houses = findSpecificHouse(comp, h)
 		}
 		return houses;
 	}
 
-	function defComp() {
-		const comp = {
-			number: data.allSanityHouse.edges.length
+	function defComp(type) {
+		if (type === false) {
+			const comp = {
+				number: data.allSanityHouse.edges.length
+			}
+			return type
+		} else {
+			return type
 		}
-		return comp
 	}
 
 	const [housesArr, setHousesArr] = useState([])
 
 	useEffect(() => {
-		const comp = defComp();
+		const comp =
+			findComponentType(data.allSanityHouseComponent.edges)
 		const houses = createHouseArray(comp);
-
 		setHousesArr(houses)
-
-	}, []) 
+	}, [data])
 
 	return (
 		<section>

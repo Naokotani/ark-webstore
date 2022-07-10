@@ -33,6 +33,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router": "^6.3.0",
     "shopify-buy": "^2.16.1",
-    "stream-browserify": "^3.0.0"
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.4"
   }
 }

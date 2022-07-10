@@ -84,9 +84,6 @@ export default function Layout({ children }) {
 								key={index} />
 						))}
 						<li>
-							<Link to="/posts">News & Events</Link>
-						</li>
-						<li>
 							<Link className="store" to="/products">Store</Link>
 						</li>
 						<li>

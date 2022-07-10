@@ -259,64 +259,79 @@ query {
 			},
 		})
 	})
+
+	// Create PDF pages
+	const pdfQuery = await graphql(`
+query {
+  allSanityPdf {
+    edges {
+      node {
+        file {
+          asset {
+						_id
+            url
+          }
+        }
+        title
+      }
+    }
+  }
+}
+  `)
+
+	if (pdfQuery.errors) {
+		throw pdfQuery.errors
+	}
+
+	const pdfs = pdfQuery.data.allSanityPdf.edges || []
+	pdfs.forEach((edge, index) => {
+		const path = `/pdfs/${edge.node.file.asset._id}`
+
+		createPage({
+			path,
+			component: require.resolve('./src/templates/pdf.js'),
+			context: {
+				title: edge.node.title,
+				link: edge.node.file.asset.url
+			},
+		})
+	})
+
+	// Create Newsletter pages
+	const newsletterQuery = await graphql(`
+query {
+  allSanityNewsletter {
+    edges {
+      node {
+        pdf {
+          asset {
+            _id
+            url
+          }
+        }
+        title
+      }
+    }
+  }
 }
 
-const webpack = require("webpack");
+  `)
 
-exports.onCreateWebpackConfig = ({ stage, loaders, actions, plugins }) => {
-	if (stage === "build-html" || stage === "develop-html") {
-		actions.setWebpackConfig({
-			module: {
-				rules: [
-					{
-						test: /react-pdf/, // check /pdfjs-dist/ too
-						use: loaders.null()
-					},
-					{
-						test: /pdfjs-dist/, // check /pdfjs-dist/ too
-						use: loaders.null()
-					},
-					{
-						test: /safer-buffer/,
-						use: loaders.null()
-					}
-				]
-			}
-		});
+	if (newsletterQuery.errors) {
+		throw newsletterQuery.errors
 	}
-	actions.setWebpackConfig({
-		resolve: {
-			fallback: {
-				module: "empty",
-				dgram: "empty",
-				dns: "mock",
-				fs: "empty",
-				http2: "empty",
-				net: "empty",
-				tls: "empty",
-				child_process: "empty",
-				process: require.resolve("process/browser"),
-				zlib: require.resolve("browserify-zlib"),
-				stream: require.resolve("stream-browserify"),
-				util: require.resolve("util"),
-				buffer: require.resolve("buffer"),
-				asset: require.resolve("assert")
-			}
-		},
-		plugins: [
-			new webpack.ProvidePlugin({
-				Buffer: ["buffer", "Buffer"],
-				process: "process/browser"
-			})
-		]
-	});
-};
 
+	const newsletters = newsletterQuery.data.allSanityNewsletter.edges || []
+	newsletters.forEach((edge, index) => {
+		const path = `/pdfs/${edge.node.pdf.asset._id}`
 
-
-const fs = require(`fs`)
-
-const pdfjsDistPath = path.dirname(require.resolve('pdfjs-dist/package.json'));
-const pdfWorkerPath = path.join(pdfjsDistPath, 'build', 'pdf.worker.js');
-
-fs.copyFileSync(pdfWorkerPath, './dist/pdf.worker.js');
+		createPage({
+			path,
+			component: require.resolve('./src/templates/pdf.js'),
+			context: {
+				title: edge.node.title,
+				link: edge.node.pdf.asset.url
+			},
+		})
+	})
+}

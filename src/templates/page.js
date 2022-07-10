@@ -6,6 +6,8 @@ import Layout from "../components/Layout";
 const Page = ({ pageContext }) => {
 	const page = pageContext;
 
+	console.log(pageContext)
+
 	return (
 		<Layout>
 			<article className="page">
