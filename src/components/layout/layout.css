@@ -390,7 +390,7 @@ button.plain:hover {
 }
 
 .underline {
-    border-bottom: solid 1px var(--orange);
+    border-bottom: solid 1px var(--purple);
 }
 
 .pointer {
