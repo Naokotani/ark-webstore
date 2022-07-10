@@ -1,13 +1,10 @@
 import React from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
-import { pdfjs } from 'react-pdf';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import BlockContent from "@sanity/block-content-to-react";
 import serializers from "../components/serializers";
 
 const Newsletter = ({ pageContext, home = false }) => {
-
-	pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 	const data = useStaticQuery(graphql`
 query {
