@@ -421,3 +421,8 @@ li {
 	list-style: initial;
 	max-width: 40rem;
 }
+
+.products--list a {
+	color: var(--textColor);
+}
+	
