@@ -31,7 +31,6 @@ Event component started.
 ** PLAN Landing page
 - featured items, welcome etc.
 * Backlog
-- State "DONE"       from "PLAN"       [2022-01-22 Sat 04:49]
 * Dates
 * Cancelled
 * Sanity
