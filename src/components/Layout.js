@@ -16,7 +16,7 @@ import "./layout/page.css"
 
 export default function Layout({ children }) {
 
-	const data = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql`
     query {
       allSanityPage {
         edges {
@@ -28,22 +28,22 @@ export default function Layout({ children }) {
           }
         }
       }
-		
-	allShopifyProduct {
-  	edges {
-  	  node {
-  	    id
+
+        allShopifyProduct {
+        edges {
+          node {
+            id
         variants {
           id
           shopifyId
         }
-  	  }
-  	}
-  } 
+          }
+        }
+  }
   allSanityLinkedImage(filter: {title: {in: ["Full Cart", "Empty Cart"]}}) {
     edges {
       node {
-				title
+                                title
         mainImage {
           asset {
             _id
@@ -55,64 +55,64 @@ export default function Layout({ children }) {
 }
   `);
 
-	const cartCount = useCartCount();
-	const emptyCart =
-		data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Empty Cart'));
-	const emptyCartId = emptyCart[0].node.mainImage.asset._id;
+    const cartCount = useCartCount();
+    const emptyCart =
+          data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Empty Cart'));
+    const emptyCartId = emptyCart[0].node.mainImage.asset._id;
 
-	const fullCart =
-		data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Full Cart'));
-	const fullCartId = fullCart[0].node.mainImage.asset._id;
+    const fullCart =
+          data.allSanityLinkedImage.edges.filter(edge => (edge.node.title === 'Full Cart'));
+    const fullCartId = fullCart[0].node.mainImage.asset._id;
 
-	// // Remove the home page link with the slug "l-arche-cape-breton"
-	const links = data.allSanityPage.edges.filter(
-		(edge) => edge.node.slug.current !== "l-arche-cape-breton"
-	)
+    // // Remove the home page link with the slug "l-arche-cape-breton"
+    const links = data.allSanityPage.edges.filter(
+        (edge) => edge.node.slug.current !== "l-arche-cape-breton"
+    )
 
-	return (
-		<StoreContextProvider>
-			<header className="nav">
-				<Link to="/">
-					<StaticImage src="../images/lcblogohd.png" alt="lol" />
-				</Link>
-				<nav className="">
-					<ul className="menu-items">
-						{links.map((link, index) => (
-							<MenuItem
-								slug={link.node.slug.current}
-								link={link.node.link}
-								key={index} />
-						))}
-						<li>
-							<Link className="store" to="/products">Store</Link>
-						</li>
-						<li>
-							<Link className="cart" to="/checkout">
-								{cartCount === 0 &&
-									<BsFillCartFill />
-								}
-								{cartCount > 0 &&
-									<span className="cart">
-										<BsCartCheckFill />
-										<span className="cart-num">
-											{cartCount}
-										</span>
-									</span>
+    return (
+        <StoreContextProvider>
+            <header className="nav">
+                <Link to="/">
+                    <StaticImage src="../images/lcblogohd.png" alt="lol" />
+                </Link>
+                <nav className="">
+                    <ul className="menu-items">
+                        {links.map((link, index) => (
+                            <MenuItem
+                                slug={link.node.slug.current}
+                                link={link.node.link}
+                                key={index} />
+                        ))}
+                        <li>
+                            <Link className="store" to="/products">Store</Link>
+                        </li>
+                        <li>
+                            <Link className="cart" to="/checkout">
+                                {cartCount === 0 &&
+                                 <BsFillCartFill />
+                                }
+                                {cartCount > 0 &&
+                                 <span className="cart">
+                                     <BsCartCheckFill />
+                                     <span className="cart-num">
+                                         {cartCount}
+                                     </span>
+                                 </span>
 
-								}
-							</Link>
-						</li>
-					</ul>
-				</nav>
-			</header>
-			<main className="layout">{children}</main>
-			<footer>
-				<h3 className="fake-logo">Fake Logo</h3>
-				<nav>
-					<Link to="/">Home</Link>
-					<Link to="/products">Store</Link>
-				</nav>
-			</footer>
-		</StoreContextProvider >
-	);
+                                }
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <main className="layout">{children}</main>
+            <footer>
+                <h3 className="fake-logo">Fake Logo</h3>
+                <nav>
+                    <Link to="/">Home</Link>
+                    <Link to="/products">Store</Link>
+                </nav>
+            </footer>
+        </StoreContextProvider >
+    );
 }

@@ -1,64 +1,63 @@
 .card p, h3, h4, h5 {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 .card h5 {
 }
 
 .card img {
-	border-radius: 5px;
+    border-radius: 5px;
 }
 
 .card section {
-	background: var(--white);
-	width: 100%;
-	border-radius: 5px;
-	padding: 5px;
-	margin-top: 10px;
+    background: var(--white);
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
 }
 
 .products--layout {
-  max-width: 1660px;
-  margin: 0 auto;
-  display: grid;
-  grid-gap: 10px;
-  /* fit as many columns as possible, 180px wide each: */
-  grid-template-columns: repeat(auto-fill, 400px);
-  /* each row is 20px high -- we always span 2+ */
-  grid-auto-rows: minmax(20px, auto);
-  justify-content: center;	
+    max-width: 1660px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    /* fit as many columns as possible, 180px wide each: */
+    grid-template-columns: repeat(auto-fill, 400px);
+    /* each row is 20px high -- we always span 2+ */
+    grid-auto-rows: minmax(20px, auto);
+    justify-content: center;
 }
 
 .products--card {
-	transition: var(--cardTransition);
+    transition: var(--cardTransition);
 }
 
 .products--card:hover {
-	box-shadow: var(--cardShadow);
+    box-shadow: var(--cardShadow);
 }
 
 .product button {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .product button+button {
-	margin-left: 10px;
+    margin-left: 10px;
 }
 
 .product .header-price {
-	font-size: var(--h3);
+    font-size: var(--h3);
 }
 
 .products--layout li.products--list {
-	list-style: none;
+    list-style: none;
 }
 
 .product h1 {
-	align-items: flex-end;
+    align-items: flex-end;
 }
 
 
 table + .checkout-button {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
-

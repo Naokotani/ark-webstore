@@ -1,28 +1,28 @@
 .page h2, .page h3 {
-	max-width: 45rem;
+    max-width: 45rem;
 }
 
 .page p, .page blockquote {
-	margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .page img {border-radius: 4px;}
 
 .page {
-	max-width: 50rem;
-	margin: auto;					 
+    max-width: 50rem;
+    margin: auto;
 };
 
 .center-image {
-	max-width: 40rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    max-width: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pdf-iframe {
-	margin-top: -3rem;
-	width: 100vw;
-  margin-left: calc(50% - 50vw);
-	height: calc(100vh - var(--headerHeight));
+    margin-top: -3rem;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    height: calc(100vh - var(--headerHeight));
 }

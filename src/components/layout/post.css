@@ -1,68 +1,68 @@
 .post--layout {
-  max-width: 1660px;
-  margin: 0 auto;
-  display: grid;
-  grid-gap: 10px;
-  /* fit as many columns as possible, 180px wide each: */
-  grid-template-columns: repeat(auto-fill, 400px);
-  /* each row is 20px high -- we always span 2+ */
-  grid-auto-rows: minmax(20px, auto);
-  justify-content: center;	
+    max-width: 1660px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    /* fit as many columns as possible, 180px wide each: */
+    grid-template-columns: repeat(auto-fill, 400px);
+    /* each row is 20px high -- we always span 2+ */
+    grid-auto-rows: minmax(20px, auto);
+    justify-content: center;
 }
 
 .post {
-	max-width: 1230px;
-	margin: auto;
+    max-width: 1230px;
+    margin: auto;
 }
 .post h1, .post h2, .post h3 {
-	margin-bottom: 0;
-	border-bottom: none;
+    margin-bottom: 0;
+    border-bottom: none;
 }
 
 .post > .post--card {
-	height: 300px;
+    height: 300px;
 }
 
 .post--card {
-	transition: var(--cardTransition);
+    transition: var(--cardTransition);
 }
 
 .post--card:hover {
-	box-shadow: var(--cardShadow);
+    box-shadow: var(--cardShadow);
 }
 
 .post--card h3, h5 {
-	margin: 0;
+    margin: 0;
 }
 
 h4.location {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 p.header-date {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .post header {
-	margin-bottom: 3rem;
-	align-items: flex-end;
+    margin-bottom: 3rem;
+    align-items: flex-end;
 }
 
 .post .card-image img {
-	max-height: 200px;
-	margin: 0;
+    max-height: 200px;
+    margin: 0;
 }
 
 .post .card-image {
-	align-items: center;
+    align-items: center;
 }
 
 .post .house-image {
-	align-items: center;
+    align-items: center;
 }
 
 .post a {
-	color: inherit;
+    color: inherit;
 }
 
 .post .grid {
@@ -71,51 +71,51 @@ p.header-date {
 }
 
 .fade-text {
-	text-overflow: ellipsis;
-	overflow: hidden;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .fade__post {
-	max-height: 100px;
+    max-height: 100px;
 }
 
 .fade__human {
-	max-height: 200px;
+    max-height: 200px;
 }
-	
+
 .fade {
     mask-image: linear-gradient(180deg, #000 60%, transparent);
- }
+}
 
 
 .page-body p {
-	max-width: 100%;
+    max-width: 100%;
 }
 
 .site-blockquote {
-	max-width: 1200px;
-	margin: auto;
-	margin-bottom: 3rem;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 3rem;
 }
 
 .page-image {
-	width: 400px;
-	float: right;
-	width: 40%;
-	margin: 0 0 0 1rem;
+    width: 400px;
+    float: right;
+    width: 40%;
+    margin: 0 0 0 1rem;
 }
 
 article.page {
-	min-height: 500px;
-	max-width: 40rem;
+    min-height: 500px;
+    max-width: 40rem;
 }
 
 .human {
-	color: var(--textColor);
+    color: var(--textColor);
 }
 
 .human-more {
-	color: var(--linkColor);
+    color: var(--linkColor);
 }
 
 .pdf {

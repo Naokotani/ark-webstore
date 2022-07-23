@@ -3,49 +3,49 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
-	useCartTotals,
+    useCartTotals,
 }
-	from "../context/StoreContext"
+from "../context/StoreContext"
 
 const ProductsPage = ({ data }) => {
-	const total = useCartTotals();
+    const total = useCartTotals();
 
-	return (
-		<Layout>
-			<header className="product">
-				<h1 className="flex">
-					<span>The Ark Store</span>
-					{total.total !== "$0.00" &&
-						<span className="header-price">
-							subtotal: {total.total}
-						</span>
-					}
-				</h1>
-			</header>
-			<ul className="products--layout">
-				{data.allShopifyProduct.edges.map(({ node }) => {
-					const image = getImage(node.featuredImage.gatsbyImageData)
-					return (
-						<li className="products--list">
-							<Link key={node.shopifyId} to={`/products/${node.handle}`}>
-								<article className="products--card card">
-									<GatsbyImage image={image} alt="" />
-									<header className="flex">
-										<h3 >
-											{node.title}
-										</h3>
-										<aside>
-											{node.priceRangeV2.minVariantPrice.amount}
-										</aside>
-									</header>
-								</article>
-							</Link>
-						</li>
-					)
-				})}
-			</ul>
-		</Layout >
-	)
+    return (
+        <Layout>
+            <header className="product">
+                <h1 className="flex">
+                    <span>The Ark Store</span>
+                    {total.total !== "$0.00" &&
+                     <span className="header-price">
+                         subtotal: {total.total}
+                     </span>
+                    }
+                </h1>
+            </header>
+            <ul className="products--layout">
+                {data.allShopifyProduct.edges.map(({ node }) => {
+                    const image = getImage(node.featuredImage.gatsbyImageData)
+                    return (
+                        <li className="products--list">
+                            <Link key={node.shopifyId} to={`/products/${node.handle}`}>
+                                <article className="products--card card">
+                                    <GatsbyImage image={image} alt="" />
+                                    <header className="flex">
+                                        <h3 >
+                                            {node.title}
+                                        </h3>
+                                        <aside>
+                                            {node.priceRangeV2.minVariantPrice.amount}
+                                        </aside>
+                                    </header>
+                                </article>
+                            </Link>
+                        </li>
+                    )
+                })}
+            </ul>
+        </Layout >
+    )
 }
 
 export default ProductsPage
@@ -56,9 +56,9 @@ export const query = graphql`
     edges {
       node {
         title
-				featuredImage {
-					gatsbyImageData
-				}
+                                featuredImage {
+                                        gatsbyImageData
+                                }
         shopifyId
         description
         handle
@@ -72,4 +72,3 @@ export const query = graphql`
   }
 }
 `
-

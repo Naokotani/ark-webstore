@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 
 const PortableLink = ({ children, mark }) => {
 
-	const data = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql`
 query {
   allSanityPage {
     edges {
@@ -33,44 +33,34 @@ query {
 }
 `)
 
-	function getLink() {
-		let link;
-		const page = data.allSanityPage.edges.filter(page => { return (
-			mark.reference._ref === page.node._id
-		)})
+    function getLink() {
+        let link;
+        const page = data.allSanityPage.edges.filter(page => { return (
+            mark.reference._ref === page.node._id
+        )})
 
-		if (page) { 
-			link = `/${page[0].node.slug.current}`
-		} else {
-			const subpage = data.allSanitySubpage.edges.filter(subpage => { return (
-			mark.reference._ref === subpage.node._id
-			)})
-			link = `/${subpage[0].node.parentPage.slug.current}/${subpage[0].node.slug.current}`
-		}
+        if (page) {
+            link = `/${page[0].node.slug.current}`
+        } else {
+            const subpage = data.allSanitySubpage.edges.filter(subpage => { return (
+                mark.reference._ref === subpage.node._id
+            )})
+            link = `/${subpage[0].node.parentPage.slug.current}/${subpage[0].node.slug.current}`
+        }
 
-		return link;
-	}
+        return link;
+    }
 
-	const link = getLink();
+    const link = getLink();
 
-	return (
-		<Link to={`/${link[0].node.slug.current}`}>
-			{children.map(child => (
-				<span>{child}</span>
-			))}
-			{}
-		</Link>
-	)
+    return (
+        <Link to={`/${link[0].node.slug.current}`}>
+            {children.map(child => (
+                <span>{child}</span>
+            ))}
+            {}
+        </Link>
+    )
 }
 
 export default PortableLink;
-
-			// {props.mark.replace ? (
-			// <Link to={props.mark.to} replace>
-			//  	{props.children}
-			//  </Link>
-			// ) : (
-			// <Link to={props.mark.to}>
-			//  	{props.children}
-			//  </Link>
-			// )}

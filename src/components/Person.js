@@ -6,7 +6,7 @@ import serializers from './serializers'
 
 const Person = (props) => {
 
-	data = useStaticQuery(graphql`
+    data = useStaticQuery(graphql`
 query{
   allSanityPerson {
     edges {
@@ -30,26 +30,25 @@ query{
 }
   `);
 
-	let person;
-	data.allSanityPerson.edges.forEach((e) => {
-		if (e.node._id === props.node._ref) {
-			person = e.node;
-		}
-	});
+    let person;
+    data.allSanityPerson.edges.forEach((e) => {
+        if (e.node._id === props.node._ref) {
+            person = e.node;
+        }
+    });
 
-	return (
-		<article className="flex">
-			<section>
-				<h3>{person.name}</h3>
-				<h4>{person.role}</h4>
-				<BlockContent blocks={person._rawBio} serializers={serializers} />
-			</section>
-			<aside>
-				<Figure id={person.mainImage.asset._id} />
-			</aside>
-		</article>
-	);
+    return (
+        <article className="flex">
+            <section>
+                <h3>{person.name}</h3>
+                <h4>{person.role}</h4>
+                <BlockContent blocks={person._rawBio} serializers={serializers} />
+            </section>
+            <aside>
+                <Figure id={person.mainImage.asset._id} />
+            </aside>
+        </article>
+    );
 };
 
 export default Person;
-
