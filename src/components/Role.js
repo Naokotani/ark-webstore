@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import Figure from "./Figure";
+import Header from "./Header";
 
 const Role = (props) => {
   const data = useStaticQuery(graphql`
@@ -39,7 +40,7 @@ const Role = (props) => {
         }
       }
     }
-    `);
+  `);
 
   function findComponent() {
     const role = data.allSanityRoleComponent.edges.filter(
@@ -50,11 +51,11 @@ const Role = (props) => {
   }
 
   function randomHouseArr(people, arr, role) {
-    let i = 0
+    let i = 0;
 
     while (people.length < role.number) {
       if (i === 20) {
-        console.error("error generating people array")
+        console.error("error generating people array");
         break;
       }
       const item = arr[Math.floor(Math.random() * arr.length)];
@@ -71,13 +72,17 @@ const Role = (props) => {
     let arr = data.allSanityPerson.edges;
 
     if (role.number && arr.length >= role.number) {
-      people = randomHouseArr(people, arr, role)
+      people = randomHouseArr(people, arr, role);
     } else if (people.length < role.number) {
       console.error("Not enough Items in array.");
       //Otherwise finde the specific person to display
     } else {
-      const names = role.specific.map(e => { return e.name })
-      people = arr.filter(person => names.some(name => name === person.node.name))
+      const names = role.specific.map((e) => {
+        return e.name;
+      });
+      people = arr.filter((person) =>
+        names.some((name) => name === person.node.name)
+      );
     }
     return people;
   }
@@ -91,14 +96,15 @@ const Role = (props) => {
 
     setRoleArr(role);
     setPeopleArr(people);
-  }, [])
+  }, []);
 
   return (
     <div className="post">
-      <header className="flex underline">
-        <h2>{roleArr.title}</h2>
-        <Link to="/people">See All Community Members</Link>
-      </header>
+      <Header
+        headerText={roleArr.title}
+        linkURL="/people"
+        linkText="See All Community Members"
+      />
       <div className="products--layout">
         {peopleArr.map((person, i) => (
           <Link to={`/profile/${person.node.slug.current}`} key={i}>
