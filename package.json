@@ -26,6 +26,7 @@
     "gatsby-source-sanity": "^7.4.2",
     "gatsby-source-shopify": "^7.7.0",
     "gatsby-transformer-sharp": "^4.18.0",
+    "node": "^18.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",

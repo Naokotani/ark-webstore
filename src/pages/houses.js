@@ -2,13 +2,13 @@ import * as React from 'react';
 import Layout from '../components/Layout'
 import House from '../components/House'
 
-const Houses = ({ data }) => {
+const Houses = () => {
 
-    return (
-        <Layout>
-            <House page={true} />
-        </Layout>
-    );
+  return (
+    <Layout>
+      <House page={true} />
+    </Layout>
+  );
 };
 
 export default Houses;
